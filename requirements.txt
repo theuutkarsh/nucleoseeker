@@ -1,4 +1,4 @@
-biopython==1.83
-numpy==1.25.1
-pandas==2.0.3
-Requests==2.32.1
+numpy>=1.25.1
+pandas>=2.0.3
+Requests>=2.32.1
+biopython>=1.83
