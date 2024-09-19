@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src package &mdash; nucleoseeker  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            nucleoseeker
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">src package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-src.columns">src.columns module</a></li>
+<li><a class="reference internal" href="#module-src.dataset_creator">src.dataset_creator module</a><ul>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator"><code class="docutils literal notranslate"><span class="pre">DatasetCreator</span></code></a><ul>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.dataset_name"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.dataset_name</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.structure_determination_methodology"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.structure_determination_methodology</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.rcsb_entity_polymer_type"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.rcsb_entity_polymer_type</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.dstart"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.dstart</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.dend"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.dend</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.download_all"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.download_all</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.exptl_method"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.exptl_method</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.resolution"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.resolution</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.year_range"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.year_range</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.polymer_entity_instance_count"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.polymer_entity_instance_count</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.polymer_entity_count_RNA"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.polymer_entity_count_RNA</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.selected_polymer_entity_types"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.selected_polymer_entity_types</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.pdbx_keywords"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.pdbx_keywords</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.polymer_type"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.polymer_type</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.sequence_length"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.sequence_length</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.sequence_identity"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.sequence_identity</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.auto_download"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.auto_download</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.alignment_tool"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.alignment_tool</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.rfam_cm_path"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.rfam_cm_path</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.e_value_cmscan"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.e_value_cmscan</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.save"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.save</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.dataset_files"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.dataset_files</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.final_fasta_path"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.final_fasta_path</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.cmscan_path"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.cmscan_path</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.tblout"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.tblout</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.clean_tblout_path"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.clean_tblout_path</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.final_fams_path"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.final_fams_path</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.final_pdb_list_path"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.final_pdb_list_path</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.final_chain_ids_path"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.final_chain_ids_path</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.cmd"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.cmd</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.data"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.data</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.structure_filter"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.structure_filter</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.polymer_level_filter"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.polymer_level_filter</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.save_filtered_data"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.save_filtered_data()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.save_pdb_list"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.save_pdb_list()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.save_dataframe"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.save_dataframe()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.get_without_filter_df"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.get_without_filter_df()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.get_structure_filtered_df"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.get_structure_filtered_df()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.get_polymer_filtered_df"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.get_polymer_filtered_df()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.get_final_df"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.get_final_df()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.create_final_fasta_file"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.create_final_fasta_file()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.run_cmscan"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.run_cmscan()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.get_final_families"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.get_final_families()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.get_final_pdb_list"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.get_final_pdb_list()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.apply_filters"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.apply_filters()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.apply_polymer_filters"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.apply_polymer_filters()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.apply_structure_filters"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.apply_structure_filters()</span></code></a></li>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.create_final_fasta_file()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_creator.DatasetCreator.run"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.run()</span></code></a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.save_dataframe()</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">DatasetCreator.save_pdb_list()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#src.dataset_creator.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.dataset_download">src.dataset_download module</a><ul>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload"><code class="docutils literal notranslate"><span class="pre">DatasetDownload</span></code></a><ul>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.SEARCH_API_BASE_URI"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.SEARCH_API_BASE_URI</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.DATA_API_BASE_URI_GRAPHQL"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.DATA_API_BASE_URI_GRAPHQL</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.dstart"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.dstart</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.dend"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.dend</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.structure_determination_methodology"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.structure_determination_methodology</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.rcsb_entity_polymer_type"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.rcsb_entity_polymer_type</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.data_path"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.data_path</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.df"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.df</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.get_search_api_query"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.get_search_api_query()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.get_graphql_query"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.get_graphql_query()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.get_pdb_list"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.get_pdb_list()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.get_data_for_each_pdb"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.get_data_for_each_pdb()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.get_data_as_df"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.get_data_as_df()</span></code></a></li>
+<li><a class="reference internal" href="#src.dataset_download.DatasetDownload.save_data_as_csv"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.save_data_as_csv()</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.DATA_API_BASE_URI_GRAPHQL</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.SEARCH_API_BASE_URI</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.get_data_as_df()</span></code></a></li>
+<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.get_data_for_each_pdb()</span></code></a></li>
+<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.get_graphql_query()</span></code></a></li>
+<li><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.get_pdb_list()</span></code></a></li>
+<li><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.get_search_api_query()</span></code></a></li>
+<li><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">DatasetDownload.save_data_as_csv()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.pdb_filter">src.pdb_filter module</a><ul>
+<li><a class="reference internal" href="#src.pdb_filter.PDBFilter"><code class="docutils literal notranslate"><span class="pre">PDBFilter</span></code></a><ul>
+<li><a class="reference internal" href="#src.pdb_filter.PDBFilter.pdb_id"><code class="docutils literal notranslate"><span class="pre">PDBFilter.pdb_id</span></code></a></li>
+<li><a class="reference internal" href="#src.pdb_filter.PDBFilter.polymer_type"><code class="docutils literal notranslate"><span class="pre">PDBFilter.polymer_type</span></code></a></li>
+<li><a class="reference internal" href="#src.pdb_filter.PDBFilter.sequence_length"><code class="docutils literal notranslate"><span class="pre">PDBFilter.sequence_length</span></code></a></li>
+<li><a class="reference internal" href="#src.pdb_filter.PDBFilter.auto_download"><code class="docutils literal notranslate"><span class="pre">PDBFilter.auto_download</span></code></a></li>
+<li><a class="reference internal" href="#src.pdb_filter.PDBFilter.pdb_parser"><code class="docutils literal notranslate"><span class="pre">PDBFilter.pdb_parser</span></code></a></li>
+<li><a class="reference internal" href="#src.pdb_filter.PDBFilter.pdb_file"><code class="docutils literal notranslate"><span class="pre">PDBFilter.pdb_file</span></code></a></li>
+<li><a class="reference internal" href="#src.pdb_filter.PDBFilter.structure_dict"><code class="docutils literal notranslate"><span class="pre">PDBFilter.structure_dict</span></code></a></li>
+<li><a class="reference internal" href="#src.pdb_filter.PDBFilter._check_and_auto_download"><code class="docutils literal notranslate"><span class="pre">PDBFilter._check_and_auto_download()</span></code></a></li>
+<li><a class="reference internal" href="#src.pdb_filter.PDBFilter.check_polymer_type"><code class="docutils literal notranslate"><span class="pre">PDBFilter.check_polymer_type()</span></code></a></li>
+<li><a class="reference internal" href="#src.pdb_filter.PDBFilter.all_characters_are_n"><code class="docutils literal notranslate"><span class="pre">PDBFilter.all_characters_are_n()</span></code></a></li>
+<li><a class="reference internal" href="#id11"><code class="docutils literal notranslate"><span class="pre">PDBFilter.check_polymer_type()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.polymer_level_filter">src.polymer_level_filter module</a><ul>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter</span></code></a><ul>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.polymer_type"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.polymer_type</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.sequence_length"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.sequence_length</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.sequence_identity"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.sequence_identity</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.auto_download"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.auto_download</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.alignment_tool"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.alignment_tool</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.pdb_parser"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.pdb_parser</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.DATA_PATH"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.DATA_PATH</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.sequence_identity_mat_file"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.sequence_identity_mat_file</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.sequence_identity_mat_path"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.sequence_identity_mat_path</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.apply_filters_on_pdb_id"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.apply_filters_on_pdb_id()</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.apply_filters_on_list"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.apply_filters_on_list()</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.create_combined_fasta_file"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.create_combined_fasta_file()</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.create_sequence_identity_mat_emboss"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.create_sequence_identity_mat_emboss()</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.get_sequence_identity_df_emboss"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.get_sequence_identity_df_emboss()</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.create_sequence_identity_mat_clustal"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.create_sequence_identity_mat_clustal()</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.get_sequence_identity_df_clustal"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.get_sequence_identity_df_clustal()</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.apply_filter_on_df"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.apply_filter_on_df()</span></code></a></li>
+<li><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter.create_final_fasta_file"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.create_final_fasta_file()</span></code></a></li>
+<li><a class="reference internal" href="#id12"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.apply_filter_on_df()</span></code></a></li>
+<li><a class="reference internal" href="#id13"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.apply_filters_on_list()</span></code></a></li>
+<li><a class="reference internal" href="#id14"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.apply_filters_on_pdb_id()</span></code></a></li>
+<li><a class="reference internal" href="#id15"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.create_combined_fasta_file()</span></code></a></li>
+<li><a class="reference internal" href="#id16"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.create_final_fasta_file()</span></code></a></li>
+<li><a class="reference internal" href="#id17"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.create_sequence_identity_mat_clustal()</span></code></a></li>
+<li><a class="reference internal" href="#id18"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.create_sequence_identity_mat_emboss()</span></code></a></li>
+<li><a class="reference internal" href="#id19"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.get_sequence_identity_df_clustal()</span></code></a></li>
+<li><a class="reference internal" href="#id20"><code class="docutils literal notranslate"><span class="pre">PolymerLevelFilter.get_sequence_identity_df_emboss()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.structure_filter">src.structure_filter module</a><ul>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter</span></code></a><ul>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.exptl_method"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.exptl_method</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.resolution"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.resolution</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.year_range"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.year_range</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.polymer_entity_instance_count"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.polymer_entity_instance_count</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.polymer_entity_count_RNA"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.polymer_entity_count_RNA</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.selected_polymer_entity_types"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.selected_polymer_entity_types</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.pdbx_keywords"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.pdbx_keywords</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter._check_dataframe"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter._check_dataframe()</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.apply_exptl_method_filter"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_exptl_method_filter()</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.apply_resolution_filter"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_resolution_filter()</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.apply_year_range_filter"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_year_range_filter()</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.apply_polymer_entity_instance_count_filter"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_polymer_entity_instance_count_filter()</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.apply_polymer_entity_count_RNA_filter"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_polymer_entity_count_RNA_filter()</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.apply_selected_polymer_entity_types_filter"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_selected_polymer_entity_types_filter()</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.apply_pdbx_keywords_filter"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_pdbx_keywords_filter()</span></code></a></li>
+<li><a class="reference internal" href="#src.structure_filter.StructureLevelFilter.apply_filters"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_filters()</span></code></a></li>
+<li><a class="reference internal" href="#id21"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_exptl_method_filter()</span></code></a></li>
+<li><a class="reference internal" href="#id22"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_filters()</span></code></a></li>
+<li><a class="reference internal" href="#id23"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_pdbx_keywords_filter()</span></code></a></li>
+<li><a class="reference internal" href="#id24"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_polymer_entity_count_RNA_filter()</span></code></a></li>
+<li><a class="reference internal" href="#id25"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_polymer_entity_instance_count_filter()</span></code></a></li>
+<li><a class="reference internal" href="#id26"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_resolution_filter()</span></code></a></li>
+<li><a class="reference internal" href="#id27"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_selected_polymer_entity_types_filter()</span></code></a></li>
+<li><a class="reference internal" href="#id28"><code class="docutils literal notranslate"><span class="pre">StructureLevelFilter.apply_year_range_filter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.utils">src.utils module</a><ul>
+<li><a class="reference internal" href="#src.utils.contacts_from_pdb"><code class="docutils literal notranslate"><span class="pre">contacts_from_pdb()</span></code></a></li>
+<li><a class="reference internal" href="#src.utils.download_fasta_file"><code class="docutils literal notranslate"><span class="pre">download_fasta_file()</span></code></a></li>
+<li><a class="reference internal" href="#src.utils.download_fasta_files"><code class="docutils literal notranslate"><span class="pre">download_fasta_files()</span></code></a></li>
+<li><a class="reference internal" href="#src.utils.download_pdb_file"><code class="docutils literal notranslate"><span class="pre">download_pdb_file()</span></code></a></li>
+<li><a class="reference internal" href="#src.utils.download_pdb_files"><code class="docutils literal notranslate"><span class="pre">download_pdb_files()</span></code></a></li>
+<li><a class="reference internal" href="#src.utils.extract_sequence_from_combined_fasta"><code class="docutils literal notranslate"><span class="pre">extract_sequence_from_combined_fasta()</span></code></a></li>
+<li><a class="reference internal" href="#src.utils.extract_sequences_for_pdb_ids"><code class="docutils literal notranslate"><span class="pre">extract_sequences_for_pdb_ids()</span></code></a></li>
+<li><a class="reference internal" href="#src.utils.generate_contact_map_from_mmcif_file"><code class="docutils literal notranslate"><span class="pre">generate_contact_map_from_mmcif_file()</span></code></a></li>
+<li><a class="reference internal" href="#src.utils.generate_contact_map_from_pdb_file"><code class="docutils literal notranslate"><span class="pre">generate_contact_map_from_pdb_file()</span></code></a></li>
+<li><a class="reference internal" href="#src.utils.get_final_fam_pdb_chain_csv"><code class="docutils literal notranslate"><span class="pre">get_final_fam_pdb_chain_csv()</span></code></a></li>
+<li><a class="reference internal" href="#src.utils.parse_fasta"><code class="docutils literal notranslate"><span class="pre">parse_fasta()</span></code></a></li>
+<li><a class="reference internal" href="#src.utils.remove_backbone_contacts"><code class="docutils literal notranslate"><span class="pre">remove_backbone_contacts()</span></code></a></li>
+<li><a class="reference internal" href="#src.utils.save_sequences"><code class="docutils literal notranslate"><span class="pre">save_sequences()</span></code></a></li>
+<li><a class="reference internal" href="#src.utils.write_sequences_to_files"><code class="docutils literal notranslate"><span class="pre">write_sequences_to_files()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nucleoseeker</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">src package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/src.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="src-package">
+<h1>src package<a class="headerlink" href="#src-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-src.columns">
+<span id="src-columns-module"></span><h2>src.columns module<a class="headerlink" href="#module-src.columns" title="Permalink to this heading"></a></h2>
+<p>The columns that will be extracted from the PDB metadata.
+We find these to be the most relevant as they capture the essence of structures in the PDB database.</p>
+<dl>
+<dt>Columns:</dt><dd><p>rcsb_id: The unique identifier for the structure in the PDB database.</p>
+<p>exptl_method: The method used to determine the structure.</p>
+<p>release_date: The date the structure was released.</p>
+<p>polymer_entity_instance_count: The number of polymer entities in the structure.</p>
+<p>polymer_entity_count_RNA: The number of RNA polymer entities in the structure.</p>
+<p>resolution: The resolution of the structure.</p>
+<p>selected_polymer_entity_types: The types of polymer entities in the structure.</p>
+<p>pdbx_keywords: Keywords associated with the structure.</p>
+</dd>
+</dl>
+</section>
+<section id="module-src.dataset_creator">
+<span id="src-dataset-creator-module"></span><h2>src.dataset_creator module<a class="headerlink" href="#module-src.dataset_creator" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.dataset_creator.</span></span><span class="sig-name descname"><span class="pre">DatasetCreator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rfam_cm_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">structure_determination_methodology</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'experimental'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rcsb_entity_polymer_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'RNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dstart</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dend</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download_all</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exptl_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['X-RAY</span> <span class="pre">DIFFRACTION']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polymer_entity_instance_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polymer_entity_count_RNA</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_polymer_entity_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdbx_keywords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['RNA']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polymer_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'polyribonucleotide'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_identity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_download</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment_tool</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'clustal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_value_cmscan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_creator.DatasetCreator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>It is used to create a dataset of RNA structure from the RCSB PDB database.
+This makes use of the DatasetDownload, StructureLevelFilter and PolymerLevelFilter classes.
+It can be used to download the dataset, apply filters at the structure and polymer level,
+all the parameters can be controlled by the user.
+Make sure to download Rfam.cm file from <a class="reference external" href="https://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/Rfam.cm.gz">https://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/Rfam.cm.gz</a>, unzip it and use <strong>infernal</strong> <strong>cmpress</strong> to compress it.
+Desired DATA_PATH can be set as an environment variable.
+When you run this class for the first time, it will create a folder for PDB files or you can create a dir called ‘pdb_files’ one level below the current directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_name</strong> (<em>str</em>) – Name of the dataset.</p></li>
+<li><p><strong>rfam_cm_path</strong> (<em>str</em>) – Path to the Rfam.cm file.</p></li>
+<li><p><strong>structure_determination_methodology</strong> (<em>str</em>) – Structure determination methodology.</p></li>
+<li><p><strong>rcsb_entity_polymer_type</strong> (<em>str</em>) – Polymer type.</p></li>
+<li><p><strong>dstart</strong> (<em>int</em>) – Start index for pagination.</p></li>
+<li><p><strong>dend</strong> (<em>int</em>) – End index for pagination.</p></li>
+<li><p><strong>download_all</strong> (<em>bool</em>) – Download all entries.</p></li>
+<li><p><strong>exptl_method</strong> (<em>list</em>) – Experimental method.</p></li>
+<li><p><strong>resolution</strong> (<em>float</em>) – Resolution.</p></li>
+<li><p><strong>year_range</strong> (<em>int</em><em> or </em><em>list</em>) – Year range.</p></li>
+<li><p><strong>polymer_entity_instance_count</strong> (<em>int</em>) – Polymer entity instance count.</p></li>
+<li><p><strong>polymer_entity_count_RNA</strong> (<em>int</em>) – Polymer entity count RNA.</p></li>
+<li><p><strong>selected_polymer_entity_types</strong> (<em>list</em>) – Selected polymer entity types.</p></li>
+<li><p><strong>pdbx_keywords</strong> (<em>list</em>) – PDBx keywords.</p></li>
+<li><p><strong>polymer_type</strong> (<em>str</em>) – Polymer type.</p></li>
+<li><p><strong>sequence_length</strong> (<em>int</em>) – Sequence length.</p></li>
+<li><p><strong>sequence_identity</strong> (<em>float</em>) – Sequence identity.</p></li>
+<li><p><strong>auto_download</strong> (<em>bool</em>) – Auto download PDB file.</p></li>
+<li><p><strong>alignment_tool</strong> (<em>str</em>) – Alignment tool.</p></li>
+<li><p><strong>e_value_cmscan</strong> (<em>float</em>) – E-value for CMScan.</p></li>
+<li><p><strong>save</strong> (<em>bool</em>) – Save filtered data, if set to False, it will not save data at each filter level.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.dataset_name">
+<span class="sig-name descname"><span class="pre">dataset_name</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.dataset_name" title="Permalink to this definition"></a></dt>
+<dd><p>Name of the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.structure_determination_methodology">
+<span class="sig-name descname"><span class="pre">structure_determination_methodology</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.structure_determination_methodology" title="Permalink to this definition"></a></dt>
+<dd><p>Structure determination methodology.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.rcsb_entity_polymer_type">
+<span class="sig-name descname"><span class="pre">rcsb_entity_polymer_type</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.rcsb_entity_polymer_type" title="Permalink to this definition"></a></dt>
+<dd><p>Polymer type.
+[‘Protein’, ‘DNA’, ‘RNA’, ‘NA-hybrid’, ‘Other’] a list can’t be passed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.dstart">
+<span class="sig-name descname"><span class="pre">dstart</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.dstart" title="Permalink to this definition"></a></dt>
+<dd><p>Start index for pagination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.dend">
+<span class="sig-name descname"><span class="pre">dend</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.dend" title="Permalink to this definition"></a></dt>
+<dd><p>End index for pagination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.download_all">
+<span class="sig-name descname"><span class="pre">download_all</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.download_all" title="Permalink to this definition"></a></dt>
+<dd><p>Download all entries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.exptl_method">
+<span class="sig-name descname"><span class="pre">exptl_method</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.exptl_method" title="Permalink to this definition"></a></dt>
+<dd><p>Experimental method.
+[‘X-RAY DIFFRACTION’, ‘SOLUTION NMR’, ‘ELECTRON MICROSCOPY’, ‘SOLID-STATE NMR’] a list can be passed
+Further details can be found at www.wwpdb.org or www.rcsb.org</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.resolution">
+<span class="sig-name descname"><span class="pre">resolution</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.resolution" title="Permalink to this definition"></a></dt>
+<dd><p>Resolution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.year_range">
+<span class="sig-name descname"><span class="pre">year_range</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.year_range" title="Permalink to this definition"></a></dt>
+<dd><p>Year range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int or list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.polymer_entity_instance_count">
+<span class="sig-name descname"><span class="pre">polymer_entity_instance_count</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.polymer_entity_instance_count" title="Permalink to this definition"></a></dt>
+<dd><p>Polymer entity instance count.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.polymer_entity_count_RNA">
+<span class="sig-name descname"><span class="pre">polymer_entity_count_RNA</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.polymer_entity_count_RNA" title="Permalink to this definition"></a></dt>
+<dd><p>Polymer entity count RNA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.selected_polymer_entity_types">
+<span class="sig-name descname"><span class="pre">selected_polymer_entity_types</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.selected_polymer_entity_types" title="Permalink to this definition"></a></dt>
+<dd><p>Selected polymer entity types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.pdbx_keywords">
+<span class="sig-name descname"><span class="pre">pdbx_keywords</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.pdbx_keywords" title="Permalink to this definition"></a></dt>
+<dd><p>PDBx keywords.
+[‘RNA’, ‘DNA/RNA’, ‘RIBOSOME’, ‘RIBOZYME’] a list can be passed
+Further details can be found at <a class="reference external" href="https://www.wwpdb.org">https://www.wwpdb.org</a> or <a class="reference external" href="https://www.rcsb.org">https://www.rcsb.org</a> or in the raw data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.polymer_type">
+<span class="sig-name descname"><span class="pre">polymer_type</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.polymer_type" title="Permalink to this definition"></a></dt>
+<dd><p>Polymer type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.sequence_length">
+<span class="sig-name descname"><span class="pre">sequence_length</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.sequence_length" title="Permalink to this definition"></a></dt>
+<dd><p>Sequence length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.sequence_identity">
+<span class="sig-name descname"><span class="pre">sequence_identity</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.sequence_identity" title="Permalink to this definition"></a></dt>
+<dd><p>Sequence identity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.auto_download">
+<span class="sig-name descname"><span class="pre">auto_download</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.auto_download" title="Permalink to this definition"></a></dt>
+<dd><p>Auto download PDB file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.alignment_tool">
+<span class="sig-name descname"><span class="pre">alignment_tool</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.alignment_tool" title="Permalink to this definition"></a></dt>
+<dd><p>Alignment tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.rfam_cm_path">
+<span class="sig-name descname"><span class="pre">rfam_cm_path</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.rfam_cm_path" title="Permalink to this definition"></a></dt>
+<dd><p>Path to the Rfam.cm file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.e_value_cmscan">
+<span class="sig-name descname"><span class="pre">e_value_cmscan</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.e_value_cmscan" title="Permalink to this definition"></a></dt>
+<dd><p>E-value for CMScan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.save">
+<span class="sig-name descname"><span class="pre">save</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.save" title="Permalink to this definition"></a></dt>
+<dd><p>Save filtered data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.dataset_files">
+<span class="sig-name descname"><span class="pre">dataset_files</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.dataset_files" title="Permalink to this definition"></a></dt>
+<dd><p>Path to the dataset folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.final_fasta_path">
+<span class="sig-name descname"><span class="pre">final_fasta_path</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.final_fasta_path" title="Permalink to this definition"></a></dt>
+<dd><p>Path to the final FASTA file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.cmscan_path">
+<span class="sig-name descname"><span class="pre">cmscan_path</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.cmscan_path" title="Permalink to this definition"></a></dt>
+<dd><p>Path to the CMScan output file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.tblout">
+<span class="sig-name descname"><span class="pre">tblout</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.tblout" title="Permalink to this definition"></a></dt>
+<dd><p>Path to the tblout file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.clean_tblout_path">
+<span class="sig-name descname"><span class="pre">clean_tblout_path</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.clean_tblout_path" title="Permalink to this definition"></a></dt>
+<dd><p>Path to the clean tblout file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.final_fams_path">
+<span class="sig-name descname"><span class="pre">final_fams_path</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.final_fams_path" title="Permalink to this definition"></a></dt>
+<dd><p>Path to the final families file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.final_pdb_list_path">
+<span class="sig-name descname"><span class="pre">final_pdb_list_path</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.final_pdb_list_path" title="Permalink to this definition"></a></dt>
+<dd><p>Path to the final PDB list file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.final_chain_ids_path">
+<span class="sig-name descname"><span class="pre">final_chain_ids_path</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.final_chain_ids_path" title="Permalink to this definition"></a></dt>
+<dd><p>Path to the final chain IDs file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.cmd">
+<span class="sig-name descname"><span class="pre">cmd</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.cmd" title="Permalink to this definition"></a></dt>
+<dd><p>cmscan command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.data">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.data" title="Permalink to this definition"></a></dt>
+<dd><p>DatasetDownload component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#src.dataset_download.DatasetDownload" title="src.dataset_download.DatasetDownload">DatasetDownload</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.structure_filter">
+<span class="sig-name descname"><span class="pre">structure_filter</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.structure_filter" title="Permalink to this definition"></a></dt>
+<dd><p>StructureLevelFilter component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#src.structure_filter.StructureLevelFilter" title="src.structure_filter.StructureLevelFilter">StructureLevelFilter</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.polymer_level_filter">
+<span class="sig-name descname"><span class="pre">polymer_level_filter</span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.polymer_level_filter" title="Permalink to this definition"></a></dt>
+<dd><p>PolymerLevelFilter component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#src.polymer_level_filter.PolymerLevelFilter" title="src.polymer_level_filter.PolymerLevelFilter">PolymerLevelFilter</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.save_filtered_data">
+<span class="sig-name descname"><span class="pre">save_filtered_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.save_filtered_data" title="Permalink to this definition"></a></dt>
+<dd><p>Save PDB list and DataFrame for each level of filters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.save_pdb_list">
+<span class="sig-name descname"><span class="pre">save_pdb_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.save_pdb_list" title="Permalink to this definition"></a></dt>
+<dd><p>Save list of PDBs to a file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.save_dataframe">
+<span class="sig-name descname"><span class="pre">save_dataframe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.save_dataframe" title="Permalink to this definition"></a></dt>
+<dd><p>Save DataFrame to a file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.get_without_filter_df">
+<span class="sig-name descname"><span class="pre">get_without_filter_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.get_without_filter_df" title="Permalink to this definition"></a></dt>
+<dd><p>Get dataframe without applying any filters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.get_structure_filtered_df">
+<span class="sig-name descname"><span class="pre">get_structure_filtered_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.get_structure_filtered_df" title="Permalink to this definition"></a></dt>
+<dd><p>Get dataframe after applying structure-level filters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.get_polymer_filtered_df">
+<span class="sig-name descname"><span class="pre">get_polymer_filtered_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.get_polymer_filtered_df" title="Permalink to this definition"></a></dt>
+<dd><p>Get dataframe after applying polymer-level filters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.get_final_df">
+<span class="sig-name descname"><span class="pre">get_final_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.get_final_df" title="Permalink to this definition"></a></dt>
+<dd><p>Get final dataframe after applying all filters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.create_final_fasta_file">
+<span class="sig-name descname"><span class="pre">create_final_fasta_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.create_final_fasta_file" title="Permalink to this definition"></a></dt>
+<dd><p>Create final FASTA file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.run_cmscan">
+<span class="sig-name descname"><span class="pre">run_cmscan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.run_cmscan" title="Permalink to this definition"></a></dt>
+<dd><p>Run CMScan.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.get_final_families">
+<span class="sig-name descname"><span class="pre">get_final_families</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.get_final_families" title="Permalink to this definition"></a></dt>
+<dd><p>Get final families.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.get_final_pdb_list">
+<span class="sig-name descname"><span class="pre">get_final_pdb_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.get_final_pdb_list" title="Permalink to this definition"></a></dt>
+<dd><p>Get final PDB list.</p>
+</dd></dl>
+
+<p>NOTE: When you use different params it is better to create a explantory dataset_name
+because internally all files will have same names and it will be hard to distinguish</p>
+<p class="rubric">Example</p>
+<p>dataset_name = ‘test’
+os.environ[‘DATA_PATH’] = str(Path(__file__).resolve().parents[1] / f’data/{dataset_name}’)
+DATA_PATH = os.environ.get(‘DATA_PATH’)
+dc = DatasetCreator(<strong>your_params_here</strong>)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.apply_filters">
+<span class="sig-name descname"><span class="pre">apply_filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_polymer_filtered_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.apply_filters" title="Permalink to this definition"></a></dt>
+<dd><p>Apply all filters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.apply_polymer_filters">
+<span class="sig-name descname"><span class="pre">apply_polymer_filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdb_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.apply_polymer_filters" title="Permalink to this definition"></a></dt>
+<dd><p>Apply polymer-level filters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.apply_structure_filters">
+<span class="sig-name descname"><span class="pre">apply_structure_filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.apply_structure_filters" title="Permalink to this definition"></a></dt>
+<dd><p>Apply structure-level filters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">create_final_fasta_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<dd><p>Create final FASTA file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_creator.DatasetCreator.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.dataset_creator.DatasetCreator.run" title="Permalink to this definition"></a></dt>
+<dd><p>Run CMScan.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">save_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
+<dd><p>Save DataFrame to a file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">save_pdb_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
+<dd><p>Save list of PDBs to a file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.dataset_creator.main">
+<span class="sig-prename descclassname"><span class="pre">src.dataset_creator.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_creator.main" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-src.dataset_download">
+<span id="src-dataset-download-module"></span><h2>src.dataset_download module<a class="headerlink" href="#module-src.dataset_download" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.dataset_download.</span></span><span class="sig-name descname"><span class="pre">DatasetDownload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure_determination_methodology</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'experimental'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rcsb_entity_polymer_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'RNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dstart</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dend</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download_all</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_download.DatasetDownload" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Download RNA dataset from RCSB PDB database.
+It is used to download the dataset from the RCSB PDB database.
+It uses the search API to get the list of PDB IDs and then uses the GraphQL API to get data for each PDB ID.
+The data is then converted into a DataFrame with the columns specified in the COLUMNS variable.
+The dataframe can be accessed using the <cite>df</cite> attribute and is also saved as a CSV file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>structure_determination_methodology</strong> (<em>str</em>) – Structure determination methodology.</p></li>
+<li><p><strong>rcsb_entity_polymer_type</strong> (<em>str</em>) – Polymer type, possible values are <cite>“Protein”, “DNA”, “RNA” ,”NA-hybrid”, “Other”</cite></p></li>
+<li><p><strong>used</strong> (<em>If &quot;Protein&quot;</em><em> or </em><em>any other value is</em>) – </p></li>
+<li><p><strong>RNA.</strong> (<em>the tool will likely work but cmscan will fail as it is designed to work with</em>) – </p></li>
+<li><p><strong>dstart</strong> (<em>int</em>) – Start index for pagination.</p></li>
+<li><p><strong>dend</strong> (<em>int</em>) – End index for pagination.</p></li>
+<li><p><strong>download_all</strong> (<em>bool</em>) – Download all entries.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.SEARCH_API_BASE_URI">
+<span class="sig-name descname"><span class="pre">SEARCH_API_BASE_URI</span></span><a class="headerlink" href="#src.dataset_download.DatasetDownload.SEARCH_API_BASE_URI" title="Permalink to this definition"></a></dt>
+<dd><p>Base URI for search API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.DATA_API_BASE_URI_GRAPHQL">
+<span class="sig-name descname"><span class="pre">DATA_API_BASE_URI_GRAPHQL</span></span><a class="headerlink" href="#src.dataset_download.DatasetDownload.DATA_API_BASE_URI_GRAPHQL" title="Permalink to this definition"></a></dt>
+<dd><p>Base URI for data API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.dstart">
+<span class="sig-name descname"><span class="pre">dstart</span></span><a class="headerlink" href="#src.dataset_download.DatasetDownload.dstart" title="Permalink to this definition"></a></dt>
+<dd><p>Start index for pagination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.dend">
+<span class="sig-name descname"><span class="pre">dend</span></span><a class="headerlink" href="#src.dataset_download.DatasetDownload.dend" title="Permalink to this definition"></a></dt>
+<dd><p>End index for pagination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.structure_determination_methodology">
+<span class="sig-name descname"><span class="pre">structure_determination_methodology</span></span><a class="headerlink" href="#src.dataset_download.DatasetDownload.structure_determination_methodology" title="Permalink to this definition"></a></dt>
+<dd><p>Structure determination methodology.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.rcsb_entity_polymer_type">
+<span class="sig-name descname"><span class="pre">rcsb_entity_polymer_type</span></span><a class="headerlink" href="#src.dataset_download.DatasetDownload.rcsb_entity_polymer_type" title="Permalink to this definition"></a></dt>
+<dd><p>Polymer type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.data_path">
+<span class="sig-name descname"><span class="pre">data_path</span></span><a class="headerlink" href="#src.dataset_download.DatasetDownload.data_path" title="Permalink to this definition"></a></dt>
+<dd><p>Path to save the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.df">
+<span class="sig-name descname"><span class="pre">df</span></span><a class="headerlink" href="#src.dataset_download.DatasetDownload.df" title="Permalink to this definition"></a></dt>
+<dd><p>Dataframe of the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.get_search_api_query">
+<span class="sig-name descname"><span class="pre">get_search_api_query</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_download.DatasetDownload.get_search_api_query" title="Permalink to this definition"></a></dt>
+<dd><p>Get search API query.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.get_graphql_query">
+<span class="sig-name descname"><span class="pre">get_graphql_query</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_download.DatasetDownload.get_graphql_query" title="Permalink to this definition"></a></dt>
+<dd><p>Get GraphQL query.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.get_pdb_list">
+<span class="sig-name descname"><span class="pre">get_pdb_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_download.DatasetDownload.get_pdb_list" title="Permalink to this definition"></a></dt>
+<dd><p>Get list of PDB IDs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.get_data_for_each_pdb">
+<span class="sig-name descname"><span class="pre">get_data_for_each_pdb</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_download.DatasetDownload.get_data_for_each_pdb" title="Permalink to this definition"></a></dt>
+<dd><p>Get data for each PDB ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.get_data_as_df">
+<span class="sig-name descname"><span class="pre">get_data_as_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_download.DatasetDownload.get_data_as_df" title="Permalink to this definition"></a></dt>
+<dd><p>Get data as DataFrame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.dataset_download.DatasetDownload.save_data_as_csv">
+<span class="sig-name descname"><span class="pre">save_data_as_csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset_download.DatasetDownload.save_data_as_csv" title="Permalink to this definition"></a></dt>
+<dd><p>Save data as CSV.</p>
+</dd></dl>
+
+<p>NOTE: If you wish to supply multiple values for structure_determination_methodology or rcsb_entity_polymer_type,
+you would have to change the search query to include multiple values.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">DATA_API_BASE_URI_GRAPHQL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://data.rcsb.org/graphql'</span></em><a class="headerlink" href="#id3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">SEARCH_API_BASE_URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://search.rcsb.org/rcsbsearch/v2/query'</span></em><a class="headerlink" href="#id4" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">get_data_as_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id5" title="Permalink to this definition"></a></dt>
+<dd><p>This method converts the data for each PDB ID into a DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dataframe of the whole dataset obtained from the RCSB PDB database using the search and GraphQL APIs.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">get_data_for_each_pdb</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Permalink to this definition"></a></dt>
+<dd><p>This method fetches data for each PDB ID using the GraphQL API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>combined data for each PDB ID.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>json</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">get_graphql_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdb_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id7" title="Permalink to this definition"></a></dt>
+<dd><p>Get GraphQL query, this is used to get data for each PDB ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pdb_ids</strong> (<em>list</em>) – List of PDB IDs.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>GraphQL query.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">get_pdb_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id8" title="Permalink to this definition"></a></dt>
+<dd><p>This method fetches the list of PDB IDs from the RCSB PDB database using the search API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of PDB IDs.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">get_search_api_query</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id9" title="Permalink to this definition"></a></dt>
+<dd><p>Get search API query, this is used to search for entries in the RCSB PDB database.
+It filters entries based on structure determination methodology and polymer type.
+This query is used to get the list of PDB IDs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Search API query.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+<p>NOTE: If you wish to supply multiple values for structure_determination_methodology or rcsb_entity_polymer_type,
+you would have to change the search query to include multiple values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">save_data_as_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id10" title="Permalink to this definition"></a></dt>
+<dd><p>Save data as CSV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em>, </em><em>os.PathLike</em>) – Path to save the data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.pdb_filter">
+<span id="src-pdb-filter-module"></span><h2>src.pdb_filter module<a class="headerlink" href="#module-src.pdb_filter" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.pdb_filter.PDBFilter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.pdb_filter.</span></span><span class="sig-name descname"><span class="pre">PDBFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdb_parser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MMCIF2Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdb_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polymer_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_download</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.pdb_filter.PDBFilter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is used to apply filters on PDB files. It analyses the PDB files at the chain and polymer level.
+It checks if each chain in the PDB file is of the given polymer type and has the required sequence length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pdb_parser</strong> (<em>Bio.PDB.MMCIFParser</em>) – PDB parser.</p></li>
+<li><p><strong>pdb_id</strong> (<em>str</em>) – PDB ID.</p></li>
+<li><p><strong>polymer_type</strong> (<em>str</em>) – Polymer type, common possible values are ‘polyribonucleotide’, ‘polydeoxyribonucleotide’, ‘polypeptide’ etc.</p></li>
+<li><p><strong>sequence_length</strong> (<em>int</em>) – Sequence length.</p></li>
+<li><p><strong>auto_download</strong> (<em>bool</em>) – Auto download PDB file if not found.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.pdb_filter.PDBFilter.pdb_id">
+<span class="sig-name descname"><span class="pre">pdb_id</span></span><a class="headerlink" href="#src.pdb_filter.PDBFilter.pdb_id" title="Permalink to this definition"></a></dt>
+<dd><p>PDB ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.pdb_filter.PDBFilter.polymer_type">
+<span class="sig-name descname"><span class="pre">polymer_type</span></span><a class="headerlink" href="#src.pdb_filter.PDBFilter.polymer_type" title="Permalink to this definition"></a></dt>
+<dd><p>Polymer type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.pdb_filter.PDBFilter.sequence_length">
+<span class="sig-name descname"><span class="pre">sequence_length</span></span><a class="headerlink" href="#src.pdb_filter.PDBFilter.sequence_length" title="Permalink to this definition"></a></dt>
+<dd><p>Sequence length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.pdb_filter.PDBFilter.auto_download">
+<span class="sig-name descname"><span class="pre">auto_download</span></span><a class="headerlink" href="#src.pdb_filter.PDBFilter.auto_download" title="Permalink to this definition"></a></dt>
+<dd><p>Auto download PDB file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.pdb_filter.PDBFilter.pdb_parser">
+<span class="sig-name descname"><span class="pre">pdb_parser</span></span><a class="headerlink" href="#src.pdb_filter.PDBFilter.pdb_parser" title="Permalink to this definition"></a></dt>
+<dd><p>PDB parser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Bio.PDB.MMCIFParser</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.pdb_filter.PDBFilter.pdb_file">
+<span class="sig-name descname"><span class="pre">pdb_file</span></span><a class="headerlink" href="#src.pdb_filter.PDBFilter.pdb_file" title="Permalink to this definition"></a></dt>
+<dd><p>Path to the PDB file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.pdb_filter.PDBFilter.structure_dict">
+<span class="sig-name descname"><span class="pre">structure_dict</span></span><a class="headerlink" href="#src.pdb_filter.PDBFilter.structure_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Structure dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.pdb_filter.PDBFilter._check_and_auto_download">
+<span class="sig-name descname"><span class="pre">_check_and_auto_download</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.pdb_filter.PDBFilter._check_and_auto_download" title="Permalink to this definition"></a></dt>
+<dd><p>Check if the PDB file exists and auto download if required.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.pdb_filter.PDBFilter.check_polymer_type">
+<span class="sig-name descname"><span class="pre">check_polymer_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.pdb_filter.PDBFilter.check_polymer_type" title="Permalink to this definition"></a></dt>
+<dd><p>Check if the PDB file satisfies the given criteria.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.pdb_filter.PDBFilter.all_characters_are_n">
+<span class="sig-name descname"><span class="pre">all_characters_are_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.pdb_filter.PDBFilter.all_characters_are_n" title="Permalink to this definition"></a></dt>
+<dd><p>Check if all characters in the string are ‘N’.
+This is helpful to remove chains with all ‘N’ characters as they can’t be processed by Clustal Omega.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – Input string.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if all characters are ‘N’, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id11">
+<span class="sig-name descname"><span class="pre">check_polymer_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Permalink to this definition"></a></dt>
+<dd><p>Check if the PDB file contains the given polymer type and has the required sequence length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of tuples containing PDB ID, chain ID and corresponding sequence.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.polymer_level_filter">
+<span id="src-polymer-level-filter-module"></span><h2>src.polymer_level_filter module<a class="headerlink" href="#module-src.polymer_level_filter" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.polymer_level_filter.</span></span><span class="sig-name descname"><span class="pre">PolymerLevelFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polymer_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_identity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_download</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment_tool</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'clustal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is used to apply PDBFilter for multiple PDB files.
+It analyses the PDB files at the chain and polymer level.
+It also calculates the sequence identity between the sequences of the PDB files.
+You can use two alignment tools: clustal and emboss. They should be installed on your system.
+We recommend using clustal as it is faster.</p>
+<p>This gives the final dataframe after applying all the filters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>polymer_type</strong> (<em>str</em>) – Polymer type.</p></li>
+<li><p><strong>sequence_length</strong> (<em>int</em>) – Sequence length.</p></li>
+<li><p><strong>sequence_identity</strong> (<em>float</em>) – Sequence identity.</p></li>
+<li><p><strong>auto_download</strong> (<em>bool</em>) – Auto download PDB file.</p></li>
+<li><p><strong>alignment_tool</strong> (<em>str</em>) – Alignment tool. Default is clustal.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.polymer_type">
+<span class="sig-name descname"><span class="pre">polymer_type</span></span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.polymer_type" title="Permalink to this definition"></a></dt>
+<dd><p>Polymer type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.sequence_length">
+<span class="sig-name descname"><span class="pre">sequence_length</span></span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.sequence_length" title="Permalink to this definition"></a></dt>
+<dd><p>Sequence length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.sequence_identity">
+<span class="sig-name descname"><span class="pre">sequence_identity</span></span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.sequence_identity" title="Permalink to this definition"></a></dt>
+<dd><p>Sequence identity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.auto_download">
+<span class="sig-name descname"><span class="pre">auto_download</span></span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.auto_download" title="Permalink to this definition"></a></dt>
+<dd><p>Auto download PDB file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.alignment_tool">
+<span class="sig-name descname"><span class="pre">alignment_tool</span></span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.alignment_tool" title="Permalink to this definition"></a></dt>
+<dd><p>Alignment tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.pdb_parser">
+<span class="sig-name descname"><span class="pre">pdb_parser</span></span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.pdb_parser" title="Permalink to this definition"></a></dt>
+<dd><p>PDB parser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Bio.PDB.MMCIFParser</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.DATA_PATH">
+<span class="sig-name descname"><span class="pre">DATA_PATH</span></span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.DATA_PATH" title="Permalink to this definition"></a></dt>
+<dd><p>Data path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.sequence_identity_mat_file">
+<span class="sig-name descname"><span class="pre">sequence_identity_mat_file</span></span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.sequence_identity_mat_file" title="Permalink to this definition"></a></dt>
+<dd><p>Sequence identity matrix file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.sequence_identity_mat_path">
+<span class="sig-name descname"><span class="pre">sequence_identity_mat_path</span></span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.sequence_identity_mat_path" title="Permalink to this definition"></a></dt>
+<dd><p>Sequence identity matrix path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.apply_filters_on_pdb_id">
+<span class="sig-name descname"><span class="pre">apply_filters_on_pdb_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.apply_filters_on_pdb_id" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filters on PDB ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.apply_filters_on_list">
+<span class="sig-name descname"><span class="pre">apply_filters_on_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.apply_filters_on_list" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filters on list of PDB IDs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.create_combined_fasta_file">
+<span class="sig-name descname"><span class="pre">create_combined_fasta_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.create_combined_fasta_file" title="Permalink to this definition"></a></dt>
+<dd><p>Create combined fasta file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.create_sequence_identity_mat_emboss">
+<span class="sig-name descname"><span class="pre">create_sequence_identity_mat_emboss</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.create_sequence_identity_mat_emboss" title="Permalink to this definition"></a></dt>
+<dd><p>Create sequence identity matrix using emboss.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.get_sequence_identity_df_emboss">
+<span class="sig-name descname"><span class="pre">get_sequence_identity_df_emboss</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.get_sequence_identity_df_emboss" title="Permalink to this definition"></a></dt>
+<dd><p>Get sequence identity dataframe using emboss.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.create_sequence_identity_mat_clustal">
+<span class="sig-name descname"><span class="pre">create_sequence_identity_mat_clustal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.create_sequence_identity_mat_clustal" title="Permalink to this definition"></a></dt>
+<dd><p>Create sequence identity matrix using clustal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.get_sequence_identity_df_clustal">
+<span class="sig-name descname"><span class="pre">get_sequence_identity_df_clustal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.get_sequence_identity_df_clustal" title="Permalink to this definition"></a></dt>
+<dd><p>Get sequence identity dataframe using clustal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.apply_filter_on_df">
+<span class="sig-name descname"><span class="pre">apply_filter_on_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.apply_filter_on_df" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter on dataframe.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.polymer_level_filter.PolymerLevelFilter.create_final_fasta_file">
+<span class="sig-name descname"><span class="pre">create_final_fasta_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.polymer_level_filter.PolymerLevelFilter.create_final_fasta_file" title="Permalink to this definition"></a></dt>
+<dd><p>Create final fasta file.</p>
+</dd></dl>
+
+<p>#! NOTE: When applying similarity cutoff, if the df contains resolution column with no values, it will raise an error.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="id12">
+<span class="sig-name descname"><span class="pre">apply_filter_on_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id12" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter on dataframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Dataframe.</p></li>
+<li><p><strong>data_list</strong> (<em>list</em>) – List of tuples containing PDB ID, chain ID, and sequence.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filtered dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id13">
+<span class="sig-name descname"><span class="pre">apply_filters_on_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdb_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id13" title="Permalink to this definition"></a></dt>
+<dd><p>Using this method, you can apply filters on a list of PDB IDs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pdb_list</strong> (<em>list</em>) – List of PDB IDs.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of tuples containing PDB ID, chain ID, and sequence.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id14">
+<span class="sig-name descname"><span class="pre">apply_filters_on_pdb_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdb_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id14" title="Permalink to this definition"></a></dt>
+<dd><p>Using this method, you can apply filters on a single PDB ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pdb_id</strong> (<em>str</em>) – PDB ID.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of tuples containing PDB ID, chain ID, and sequence.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id15">
+<span class="sig-name descname"><span class="pre">create_combined_fasta_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id15" title="Permalink to this definition"></a></dt>
+<dd><p>Create a combined fasta file from the data list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data_list</strong> (<em>list</em>) – List of tuples containing PDB ID, chain ID, and sequence.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id16">
+<span class="sig-name descname"><span class="pre">create_final_fasta_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_final</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id16" title="Permalink to this definition"></a></dt>
+<dd><p>Create final fasta file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df_final</strong> (<em>pd.DataFrame</em>) – Final dataframe.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id17">
+<span class="sig-name descname"><span class="pre">create_sequence_identity_mat_clustal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">combined_fasta_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id17" title="Permalink to this definition"></a></dt>
+<dd><p>Create sequence identity matrix using clustal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>combined_fasta_file</strong> (<em>str</em>) – Combined fasta file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id18">
+<span class="sig-name descname"><span class="pre">create_sequence_identity_mat_emboss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id18" title="Permalink to this definition"></a></dt>
+<dd><p>Create sequence identity matrix using emboss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data_list</strong> (<em>list</em>) – List of tuples containing PDB ID, chain ID, and sequence.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sequence identity matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id19">
+<span class="sig-name descname"><span class="pre">get_sequence_identity_df_clustal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id19" title="Permalink to this definition"></a></dt>
+<dd><p>Get sequence identity dataframe using clustal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data_list</strong> (<em>list</em>) – List of tuples containing PDB ID, chain ID, and sequence.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sequence identity dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id20">
+<span class="sig-name descname"><span class="pre">get_sequence_identity_df_emboss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id20" title="Permalink to this definition"></a></dt>
+<dd><p>Get sequence identity dataframe using emboss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data_list</strong> (<em>list</em>) – List of tuples containing PDB ID, chain ID, and sequence.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sequence identity dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.structure_filter">
+<span id="src-structure-filter-module"></span><h2>src.structure_filter module<a class="headerlink" href="#module-src.structure_filter" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.structure_filter.</span></span><span class="sig-name descname"><span class="pre">StructureLevelFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exptl_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polymer_entity_instance_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polymer_entity_count_RNA</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_polymer_entity_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdbx_keywords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Filter the dataset at the structure level.
+Using this class we can filter the dataset based on structure level attributes.
+It works on the columns specified in the COLUMNS variable and filters the dataset based on the given criteria.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exptl_method</strong> (<em>list</em>) – Experimental method.</p></li>
+<li><p><strong>resolution</strong> (<em>float</em>) – Resolution.</p></li>
+<li><p><strong>year_range</strong> (<em>int</em><em> or </em><em>list</em>) – Year range.</p></li>
+<li><p><strong>polymer_entity_instance_count</strong> (<em>int</em>) – Polymer entity instance count.</p></li>
+<li><p><strong>polymer_entity_count_RNA</strong> (<em>int</em>) – Polymer entity count RNA.</p></li>
+<li><p><strong>selected_polymer_entity_types</strong> (<em>list</em>) – Selected polymer entity types.</p></li>
+<li><p><strong>pdbx_keywords</strong> (<em>list</em>) – PDBx keywords.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.exptl_method">
+<span class="sig-name descname"><span class="pre">exptl_method</span></span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.exptl_method" title="Permalink to this definition"></a></dt>
+<dd><p>Experimental method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.resolution">
+<span class="sig-name descname"><span class="pre">resolution</span></span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.resolution" title="Permalink to this definition"></a></dt>
+<dd><p>Resolution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.year_range">
+<span class="sig-name descname"><span class="pre">year_range</span></span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.year_range" title="Permalink to this definition"></a></dt>
+<dd><p>Year range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int or list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.polymer_entity_instance_count">
+<span class="sig-name descname"><span class="pre">polymer_entity_instance_count</span></span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.polymer_entity_instance_count" title="Permalink to this definition"></a></dt>
+<dd><p>Polymer entity instance count.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.polymer_entity_count_RNA">
+<span class="sig-name descname"><span class="pre">polymer_entity_count_RNA</span></span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.polymer_entity_count_RNA" title="Permalink to this definition"></a></dt>
+<dd><p>Polymer entity count RNA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.selected_polymer_entity_types">
+<span class="sig-name descname"><span class="pre">selected_polymer_entity_types</span></span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.selected_polymer_entity_types" title="Permalink to this definition"></a></dt>
+<dd><p>Selected polymer entity types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.pdbx_keywords">
+<span class="sig-name descname"><span class="pre">pdbx_keywords</span></span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.pdbx_keywords" title="Permalink to this definition"></a></dt>
+<dd><p>PDBx keywords.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter._check_dataframe">
+<span class="sig-name descname"><span class="pre">_check_dataframe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter._check_dataframe" title="Permalink to this definition"></a></dt>
+<dd><p>Check if the dataframe columns match the expected columns.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.apply_exptl_method_filter">
+<span class="sig-name descname"><span class="pre">apply_exptl_method_filter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.apply_exptl_method_filter" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on experimental method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.apply_resolution_filter">
+<span class="sig-name descname"><span class="pre">apply_resolution_filter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.apply_resolution_filter" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on resolution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.apply_year_range_filter">
+<span class="sig-name descname"><span class="pre">apply_year_range_filter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.apply_year_range_filter" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on year range.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.apply_polymer_entity_instance_count_filter">
+<span class="sig-name descname"><span class="pre">apply_polymer_entity_instance_count_filter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.apply_polymer_entity_instance_count_filter" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on polymer entity instance count.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.apply_polymer_entity_count_RNA_filter">
+<span class="sig-name descname"><span class="pre">apply_polymer_entity_count_RNA_filter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.apply_polymer_entity_count_RNA_filter" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on polymer entity count RNA.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.apply_selected_polymer_entity_types_filter">
+<span class="sig-name descname"><span class="pre">apply_selected_polymer_entity_types_filter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.apply_selected_polymer_entity_types_filter" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on selected polymer entity types.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.apply_pdbx_keywords_filter">
+<span class="sig-name descname"><span class="pre">apply_pdbx_keywords_filter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.apply_pdbx_keywords_filter" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on PDBx keywords.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.structure_filter.StructureLevelFilter.apply_filters">
+<span class="sig-name descname"><span class="pre">apply_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.structure_filter.StructureLevelFilter.apply_filters" title="Permalink to this definition"></a></dt>
+<dd><p>Apply all the filters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id21">
+<span class="sig-name descname"><span class="pre">apply_exptl_method_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id21" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on experimental method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input dataframe.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filtered dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id22">
+<span class="sig-name descname"><span class="pre">apply_filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id22" title="Permalink to this definition"></a></dt>
+<dd><p>Apply all the filters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input dataframe.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filtered dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id23">
+<span class="sig-name descname"><span class="pre">apply_pdbx_keywords_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id23" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on PDBx keywords.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input dataframe.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filtered dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id24">
+<span class="sig-name descname"><span class="pre">apply_polymer_entity_count_RNA_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id24" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on polymer entity count RNA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input dataframe.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filtered dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id25">
+<span class="sig-name descname"><span class="pre">apply_polymer_entity_instance_count_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id25" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on polymer entity instance count.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input dataframe.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filtered dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id26">
+<span class="sig-name descname"><span class="pre">apply_resolution_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id26" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on resolution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input dataframe.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filtered dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id27">
+<span class="sig-name descname"><span class="pre">apply_selected_polymer_entity_types_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id27" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on selected polymer entity types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input dataframe.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filtered dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id28">
+<span class="sig-name descname"><span class="pre">apply_year_range_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id28" title="Permalink to this definition"></a></dt>
+<dd><p>Apply filter based on year range. It can be a single year or a range of two years.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input dataframe.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filtered dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.utils">
+<span id="src-utils-module"></span><h2>src.utils module<a class="headerlink" href="#module-src.utils" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.contacts_from_pdb">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">contacts_from_pdb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.contacts_from_pdb" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.download_fasta_file">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">download_fasta_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdb_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.download_fasta_file" title="Permalink to this definition"></a></dt>
+<dd><p>This is used to download a fasta file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pdb_id</strong> (<em>str</em>) – The PDB ID.</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – The output directory.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.download_fasta_files">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">download_fasta_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdb_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.download_fasta_files" title="Permalink to this definition"></a></dt>
+<dd><p>This is used to download a list of fasta files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pdb_list</strong> (<em>list</em>) – The list of PDB IDs.</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – The output directory.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.download_pdb_file">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">download_pdb_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdb_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.download_pdb_file" title="Permalink to this definition"></a></dt>
+<dd><p>This is used to download a PDB file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pdb_id</strong> (<em>str</em>) – The PDB ID.</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – The output directory.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.download_pdb_files">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">download_pdb_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdb_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.download_pdb_files" title="Permalink to this definition"></a></dt>
+<dd><p>This is used to download a list of PDB files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pdb_list</strong> (<em>list</em>) – The list of PDB IDs.</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – The output directory.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.extract_sequence_from_combined_fasta">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">extract_sequence_from_combined_fasta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">combined_fasta_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdb_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.extract_sequence_from_combined_fasta" title="Permalink to this definition"></a></dt>
+<dd><p>It takes as input a combined fasta file and extracts the sequence of a given pdb_id.
+If the fasta header is not of the format {pdb_id}_{chain}, it will throw an error.
+:param combined_fasta_file: The combined fasta file.
+:type combined_fasta_file: str
+:param output_dir: The output directory.
+:type output_dir: str
+:param pdb_id: The pdb_id.
+:type pdb_id: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Saves the sequence to a file with name {output_dir}/{pdb_id}_{chain}.fa</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.extract_sequences_for_pdb_ids">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">extract_sequences_for_pdb_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">combined_fasta_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdb_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.extract_sequences_for_pdb_ids" title="Permalink to this definition"></a></dt>
+<dd><p>It takes as input a combined fasta file and extracts the sequence of a given pdb_id.
+If the fasta header is not of the format {pdb_id}_{chain}, it will throw an error.
+:param combined_fasta_file: The combined fasta file.
+:type combined_fasta_file: str
+:param output_dir: The output directory.
+:type output_dir: str
+:param pdb_ids: The list of pdb_ids.
+:type pdb_ids: list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Saves the sequence to a file with name {output_dir}/{pdb_id}_{chain}.fa</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.generate_contact_map_from_mmcif_file">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">generate_contact_map_from_mmcif_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mmcif_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_cutoff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.generate_contact_map_from_mmcif_file" title="Permalink to this definition"></a></dt>
+<dd><p>It generates a contact map from a mmcif file.
+It used MMCIFParser from Bio.PDB to parse the mmcif file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.generate_contact_map_from_pdb_file">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">generate_contact_map_from_pdb_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdb_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_cutoff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.generate_contact_map_from_pdb_file" title="Permalink to this definition"></a></dt>
+<dd><p>It generates a contact map from a pdb file.
+It uses the PDBParser from the Bio.PDB module to parse the pdb file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.get_final_fam_pdb_chain_csv">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">get_final_fam_pdb_chain_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clean_tblout_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.get_final_fam_pdb_chain_csv" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.parse_fasta">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">parse_fasta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fasta_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.parse_fasta" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.remove_backbone_contacts">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">remove_backbone_contacts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contacts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.remove_backbone_contacts" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.save_sequences">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">save_sequences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">final_fasta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.save_sequences" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.utils.write_sequences_to_files">
+<span class="sig-prename descclassname"><span class="pre">src.utils.</span></span><span class="sig-name descname"><span class="pre">write_sequences_to_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequences</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.write_sequences_to_files" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-src">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Utkarsh Upadhyay.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

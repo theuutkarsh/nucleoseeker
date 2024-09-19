@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started &mdash; nucleoseeker  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            nucleoseeker
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Getting Started</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">nucleoseeker</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>Welcome to NucleoSeeker’s documentation!</p>
+<p>NucleoSeeker - A tool for precision filtering of RNA structures to enhance Deep learning predictions</p>
+<div class="toctree-wrapper compound">
+</div>
+<section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h1>
+<p>To get started with NucleoSeeker, follow the following steps:</p>
+<p>Currently we only support Unix based systems including MacOS.</p>
+<p><strong>Setup Steps</strong>
+<strong>Get Clustal Omega ready</strong></p>
+<ul class="simple">
+<li><p>Instructions to setup clustal-omega can be found <a class="reference external" href="http://www.clustal.org/omega/INSTALL">http://www.clustal.org/omega/INSTALL</a></p></li>
+<li><p>Clustal omega version supported <cite>1.2.4</cite></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>http://www.clustal.org/omega/clustal-omega-1.2.4.tar.gz
+tar<span class="w"> </span>zxf<span class="w"> </span>clustal-omega-1.2.4.tar.gz
+<span class="nb">cd</span><span class="w"> </span>clustal-omega-1.2.4
+./configure<span class="w"> </span>--prefix<span class="w"> </span>/your/install/path
+make
+make<span class="w"> </span>check<span class="w">                 </span><span class="c1"># optional: run automated tests</span>
+make<span class="w"> </span>install<span class="w">               </span><span class="c1"># optional: install Infernal programs, man pages</span>
+
+<span class="c1"># or use this</span>
+
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>clustalo
+</pre></div>
+</div>
+<p><strong>Get Emboss ready (Optional)</strong></p>
+<ul class="simple">
+<li><p><strong>NOTE</strong> - <em>Emboss is very slow, unless you are experimenting we don’t recommend using it. Clustal Omega should be sufficient for most use cases.</em></p></li>
+<li><p>For setting up Emboss, please read <a class="reference external" href="http://emboss.open-bio.org/html/adm/ch01s01.html">http://emboss.open-bio.org/html/adm/ch01s01.html</a></p></li>
+<li><p>Emboss version supported <cite>6.6.0</cite></p></li>
+</ul>
+<p><strong>Get Infernal ready</strong></p>
+<ul class="simple">
+<li><p>For infernal follow instructions <a class="reference external" href="http://eddylab.org/infernal">http://eddylab.org/infernal</a></p></li>
+<li><p>Infernal version supported <cite>1.1.5</cite></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>http://eddylab.org/software/infernal/infernal.tar.gz
+tar<span class="w"> </span>zxf<span class="w"> </span>infernal.tar.gz
+<span class="nb">cd</span><span class="w"> </span>infernal-1.1.5
+./configure<span class="w"> </span>--prefix<span class="w"> </span>/your/install/path
+make
+make<span class="w"> </span>check<span class="w">                 </span><span class="c1"># optional: run automated tests</span>
+make<span class="w"> </span>install<span class="w">               </span><span class="c1"># optional: install Infernal programs, man pages</span>
+
+<span class="c1"># or use this</span>
+
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>infernal<span class="w"> </span>infernal-doc
+</pre></div>
+</div>
+<p><strong>Get Rfam.cm file ready</strong></p>
+<ul class="simple">
+<li><p>To use this tool, you need to provide Rfam covariance model which is available for download at <a class="reference external" href="https://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/Rfam.cm.gz">https://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/Rfam.cm.gz</a>. It also needs to be modified using <cite>cmpress</cite> command from <cite>Infernal</cite> tool (mentioned above). If you don’t have it then use the code below -</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>nucleoseeker
+mkdir<span class="w"> </span>-p<span class="w"> </span>rfam
+wget<span class="w"> </span>https://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/Rfam.cm.gz<span class="w"> </span>-O<span class="w"> </span>Rfam.cm.gz
+gunzip<span class="w"> </span>Rfam.cm.gz
+cmpress<span class="w"> </span>Rfam.cm
+</pre></div>
+</div>
+</section>
+<section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
+<p>To install NucleoSeeker, you can use the following steps:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>__repo_url__
+<span class="nb">cd</span><span class="w"> </span>nucleoseeker
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h1>
+<p>To generate a new dataset using NucleoSeeker, the following command can be used:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">DATA_PATH</span><span class="o">=</span>/path/to/data<span class="w"> </span><span class="c1"># the dataset will be saved here</span>
+python3<span class="w"> </span>src/dataset_creator.py<span class="w"> </span>--dataset_name<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--rfam_cm_path<span class="w"> </span>your/rfam/path<span class="w"> </span>--exptl_method<span class="w"> </span><span class="s2">&quot;X-RAY DIFFRACTION&quot;</span><span class="w"> </span>--resolution<span class="w"> </span><span class="m">3</span>.6<span class="w"> </span>--year_range<span class="w"> </span><span class="m">2024</span><span class="w"> </span>--save<span class="w"> </span><span class="m">1</span><span class="w"> </span>--dend<span class="w"> </span><span class="m">500</span>
+</pre></div>
+</div>
+<p>After using this command a directory with the name <cite>test</cite> will be created in the <cite>DATA_PATH</cite> directory with the following subdirectories:</p>
+<p>Directories:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>DATA_PATH
+├──<span class="w"> </span><span class="nb">test</span>
+│<span class="w">   </span>├──<span class="w"> </span>files
+│<span class="w">   </span>├──<span class="w"> </span>sequences
+├──clean_tblout.tblout
+├──cmscan.out
+├──combined.fasta
+├──fam_pdb_chain.csv
+├──final.fasta
+├──raw_experimental_RNA_0_500.csv
+├──sequence_identity_mat_clustal.csv
+├──tblout.tblout
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>This tool generates various files mostly at each level of filter. The first file that is generated is the <cite>raw</cite> csv file which contains the raw data from the PDB database.</p></li>
+<li><p>Then the <cite>combined.fasta</cite> file is generated which contains sequences used in sequence identity calculation by <cite>Clustal Omega</cite> and <cite>Emboss</cite>. This file is obtained after applying <cite>StructureLevelFilter</cite> and <cite>PDBFilter</cite> on the raw data.</p></li>
+<li><p>The <cite>sequence_identity_mat_clustal(emboss).csv</cite> file contains the sequence identity matrix obtained from <cite>Clustal Omega</cite> and <cite>Emboss</cite> tools.</p></li>
+<li><p>The <cite>final.fasta</cite> file contains the final sequences in fasta format, these are the final sequences and if you don’t want to analyse families then this is the final output.</p></li>
+<li><p>After this <cite>cmscan.out</cite>, <cite>tblout.tblout</cite>, <cite>clean_tblout.tblout</cite> files are generated which are the output of <cite>Infernal</cite> tool. The <cite>fam_pdb_chain.csv</cite> file contains the mapping of the family and the PDB chain.</p></li>
+<li><p>The <cite>fam_pdb_chain.csv</cite> is obtained after family search by <cite>Infernal</cite> tool. This is your final output if you want to analyse families.</p></li>
+<li><p>The <cite>files</cite> directory contains the dataframe and list for structures at each level of filter.</p></li>
+<li><p>The <cite>sequences</cite> directory sequences for all the final structures in individual fasta files.</p></li>
+</ul>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Utkarsh Upadhyay.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
