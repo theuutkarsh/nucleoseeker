@@ -3,7 +3,6 @@ import typing
 import pandas as pd
 import requests
 import logging
-import pathlib
 from nucleoseeker.columns import COLUMNS
 
 DATA_PATH = os.environ.get('DATA_PATH')

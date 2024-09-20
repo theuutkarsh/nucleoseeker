@@ -4,7 +4,6 @@ import logging
 import typing
 import platform
 import argparse
-from pathlib import Path
 from typing import Optional, Union
 import pandas as pd
 from nucleoseeker.dataset_download import DatasetDownload

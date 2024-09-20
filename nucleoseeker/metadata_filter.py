@@ -1,5 +1,4 @@
 import pandas as pd
-import logging
 import typing
 from datetime import date
 from nucleoseeker.columns import COLUMNS
