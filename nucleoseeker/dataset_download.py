@@ -69,7 +69,6 @@ class DatasetDownload:
                 f"raw_{self.structure_determination_methodology}_{self.rcsb_entity_polymer_type}_{self.dstart}_{self.dend}.csv"
             )
         
-
         if os.path.exists(self.raw_data_path):
             self.df = pd.read_csv(self.raw_data_path)
         else:
@@ -77,10 +76,7 @@ class DatasetDownload:
                 os.makedirs(self.data_path)
             self.df = self.get_data_as_df()
             self.save_data_as_csv(
-                os.path.join(
-                    self.data_path,
-                    self.raw_data_path
-                )
+                self.raw_data_path
             )
         
     def get_search_api_query(self):

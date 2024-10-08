@@ -98,18 +98,18 @@ After using this command, a directory with the name `test` will be created in th
 
 ```
       ├── DATA_PATH
-      ├── pdb_files
-      ├── test_dataset
-          ├── files
-          ├── sequences
-          ├──clean_tblout.tblout
-          ├──cmscan.out
-          ├──combined.fasta
-          ├──fam_pdb_chain.csv
-          ├──final.fasta
-          ├──raw_experimental_RNA_0_500.csv
-          ├──sequence_identity_mat_clustal.csv
-          ├──tblout.tblout
+         ├── pdb_files
+         ├── test_dataset
+             ├── files
+             ├── sequences
+             ├──clean_tblout.tblout
+             ├──cmscan.out
+             ├──combined.fasta
+             ├──fam_pdb_chain.csv
+             ├──final.fasta
+             ├──raw_experimental_RNA_0_500.csv
+             ├──sequence_identity_mat_clustal.csv
+             ├──tblout.tblout
 
 ```
 
