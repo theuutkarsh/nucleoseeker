@@ -6,7 +6,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='nucleoseeker',
-    version='0.1.1',
+    version='0.1.2',
     author='Utkarsh Upadhyay',
     author_email='u.upadhyay@fz-juelich.de',
     description='Precision filtering of RNA databases to curate high-quality datasets',
