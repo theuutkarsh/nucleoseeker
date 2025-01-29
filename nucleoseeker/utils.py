@@ -81,6 +81,7 @@ def get_final_fam_pdb_chain_csv(clean_tblout_path):
     filtered_df.to_csv(fam_pdb_chain_csv_path, index=False)
     os.remove(temp_file_path)
     logging.debug('Final PDB list obtained')
+    return filtered_df
 
 def download_pdb_file(pdb_id, output_dir):
     """

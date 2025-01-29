@@ -4,9 +4,117 @@ import pandas as pd
 import requests
 import logging
 from nucleoseeker.columns import COLUMNS
+from nucleoseeker.rna_types import RNA_TYPES
 
 DATA_PATH = os.environ.get('DATA_PATH')
 
+
+SEARCH_API_BASE_URI = 'https://search.rcsb.org/rcsbsearch/v2/query'
+DATA_API_BASE_URI_GRAPHQL = 'https://data.rcsb.org/graphql'
+
+
+
+def get_search_api_query(structure_determination_methodology: str, rcsb_entity_polymer_type: str, dstart: int, dend: int):
+    """
+    Get search API query, this is used to search for entries in the RCSB PDB database.
+    It filters entries based on structure determination methodology and polymer type.
+    This query is used to get the list of PDB IDs.
+    
+    Returns:
+        dict: Search API query.
+    NOTE: If you wish to supply multiple values for structure_determination_methodology or rcsb_entity_polymer_type,
+    you would have to change the search query to include multiple values.
+    """
+    query = {
+        "query": {
+            "type": "group",
+            "nodes": [
+            {
+                "type": "terminal",
+                "service": "text",
+                "parameters": {
+                "attribute": "rcsb_entry_info.structure_determination_methodology",
+                "operator": "exact_match",
+                "value": f"{structure_determination_methodology}"
+                }
+            },
+            {
+                "type": "terminal",
+                "service": "text",
+                "parameters": {
+                "attribute": "entity_poly.rcsb_entity_polymer_type",
+                "operator": "exact_match",
+                "negation": False,
+                "value": f"{rcsb_entity_polymer_type}"
+                }
+            }
+            ],
+            "logical_operator": "and",
+            "label": "text"
+        },
+        "return_type": "entry",
+        "request_options": {
+            "paginate": {
+            "start": dstart,
+            "rows": dend
+            },
+            "results_content_type": [
+            "experimental"
+            ],
+            "sort": [
+            {
+                "sort_by": "score",
+                "direction": "desc"
+            }
+            ],
+            "scoring_strategy": "combined"
+        }
+    }
+    return query
+
+
+def get_graphql_query(pdb_ids: list):
+    """
+    Get GraphQL query, this is used to get data for each PDB ID.
+    
+    Args:
+        pdb_ids (list): List of PDB IDs.
+        
+    Returns:
+        dict: GraphQL query."""
+    query = """
+        query GetPDBEntries($entryIDs: [String!]!) {
+        entries(entry_ids: $entryIDs) 
+        {
+            rcsb_id
+            exptl {
+            method
+            }
+            rcsb_accession_info {
+            initial_release_date
+            }
+            rcsb_entry_info {
+            deposited_polymer_entity_instance_count
+            polymer_entity_count_RNA
+            resolution_combined
+            selected_polymer_entity_types
+            }
+            struct_keywords {
+            pdbx_keywords
+            text
+            }
+        }
+    }
+    """
+    variables = {
+        "entryIDs": pdb_ids
+    }
+
+    query_json = {
+        "query": query,
+        "variables": variables
+    }
+    return query_json
 
 class DatasetDownload:
     """
@@ -45,8 +153,6 @@ class DatasetDownload:
     NOTE: If you wish to supply multiple values for structure_determination_methodology or rcsb_entity_polymer_type,
     you would have to change the search query to include multiple values.
     """
-    SEARCH_API_BASE_URI = 'https://search.rcsb.org/rcsbsearch/v2/query'
-    DATA_API_BASE_URI_GRAPHQL = 'https://data.rcsb.org/graphql'
 
     def __init__(
         self,
@@ -58,128 +164,17 @@ class DatasetDownload:
     ):
         self.dstart = dstart
         self.dend = dend
+        assert self.dend > self.dstart, "End index should be greater than start index"
+        assert self.dend != 0, "End index should not be 0"
         if download_all:
             self.dstart = 0
             self.dend = 10000
         self.structure_determination_methodology = structure_determination_methodology
         self.rcsb_entity_polymer_type = rcsb_entity_polymer_type
         self.data_path = os.environ.get('DATA_PATH')
-        self.raw_data_path = os.path.join(
-                self.data_path,
-                f"raw_{self.structure_determination_methodology}_{self.rcsb_entity_polymer_type}_{self.dstart}_{self.dend}.csv"
-            )
-        
-        if os.path.exists(self.raw_data_path):
-            self.df = pd.read_csv(self.raw_data_path)
-        else:
-            if not os.path.exists(self.data_path):
-                os.makedirs(self.data_path)
-            self.df = self.get_data_as_df()
-            self.save_data_as_csv(
-                self.raw_data_path
-            )
-        
-    def get_search_api_query(self):
-        """
-        Get search API query, this is used to search for entries in the RCSB PDB database.
-        It filters entries based on structure determination methodology and polymer type.
-        This query is used to get the list of PDB IDs.
-        
-        Returns:
-            dict: Search API query.
-        NOTE: If you wish to supply multiple values for structure_determination_methodology or rcsb_entity_polymer_type,
-        you would have to change the search query to include multiple values.
-        """
-        query = {
-            "query": {
-                "type": "group",
-                "nodes": [
-                {
-                    "type": "terminal",
-                    "service": "text",
-                    "parameters": {
-                    "attribute": "rcsb_entry_info.structure_determination_methodology",
-                    "operator": "exact_match",
-                    "value": f"{self.structure_determination_methodology}"
-                    }
-                },
-                {
-                    "type": "terminal",
-                    "service": "text",
-                    "parameters": {
-                    "attribute": "entity_poly.rcsb_entity_polymer_type",
-                    "operator": "exact_match",
-                    "negation": False,
-                    "value": f"{self.rcsb_entity_polymer_type}"
-                    }
-                }
-                ],
-                "logical_operator": "and",
-                "label": "text"
-            },
-            "return_type": "entry",
-            "request_options": {
-                "paginate": {
-                "start": self.dstart,
-                "rows": self.dend
-                },
-                "results_content_type": [
-                "experimental"
-                ],
-                "sort": [
-                {
-                    "sort_by": "score",
-                    "direction": "desc"
-                }
-                ],
-                "scoring_strategy": "combined"
-            }
-        }
-        return query
 
-    def get_graphql_query(self, pdb_ids: list):
-        """
-        Get GraphQL query, this is used to get data for each PDB ID.
-        
-        Args:
-            pdb_ids (list): List of PDB IDs.
-            
-        Returns:
-            dict: GraphQL query."""
-        query = """
-            query GetPDBEntries($entryIDs: [String!]!) {
-            entries(entry_ids: $entryIDs) 
-            {
-                rcsb_id
-                exptl {
-                method
-                }
-                rcsb_accession_info {
-                initial_release_date
-                }
-                rcsb_entry_info {
-                deposited_polymer_entity_instance_count
-                polymer_entity_count_RNA
-                resolution_combined
-                selected_polymer_entity_types
-                }
-                struct_keywords {
-                pdbx_keywords
-                }
-            }
-        }
-        """
-        variables = {
-            "entryIDs": pdb_ids
-        }
-
-        query_json = {
-            "query": query,
-            "variables": variables
-        }
-        return query_json
     
-    def get_pdb_list(self):
+    def get_pdb_list(self, dstart: int, dend: int):
         """
         This method fetches the list of PDB IDs from the RCSB PDB database using the search API.
         
@@ -187,9 +182,9 @@ class DatasetDownload:
             list: List of PDB IDs.
         """
         try:
-            response = requests.post(self.SEARCH_API_BASE_URI, json=self.get_search_api_query())
+            response = requests.post(SEARCH_API_BASE_URI, json=get_search_api_query(self.structure_determination_methodology, self.rcsb_entity_polymer_type, dstart, dend))
             response.raise_for_status()
-            logging.info('Successfully fetched PDB list')
+            logging.info('Successfully fetched {} PDB IDs starting from {}'.format(dend, dstart))
         except requests.exceptions.RequestException as e:
             logging.error(f'Failed to fetch PDB list: {e}')
             raise
@@ -208,10 +203,15 @@ class DatasetDownload:
         Returns:
             json: combined data for each PDB ID.
         """
-        pdb_list = self.get_pdb_list()
-        graphql_query = self.get_graphql_query(pdb_list)
+        pdb_list = []
+        if self.dend > 10000:
+            for i in range(self.dstart, self.dend, 10000):
+                pdb_list.extend(self.get_pdb_list(i, 10000))
+        else:
+            pdb_list.extend(self.get_pdb_list(self.dstart, self.dend))
+        graphql_query = get_graphql_query(pdb_list)
         try:
-            response = requests.post(self.DATA_API_BASE_URI_GRAPHQL, json=graphql_query)
+            response = requests.post(DATA_API_BASE_URI_GRAPHQL, json=graphql_query)
             response.raise_for_status()
             logging.info('Successfully fetched data for each PDB')
         except requests.exceptions.RequestException as e:
@@ -234,9 +234,24 @@ class DatasetDownload:
         df['exptl_method'] = df['exptl_method'].apply(lambda x: x[0]['method'] if isinstance(x, list) and x else None)
         df['resolution'] = df['resolution'].apply(lambda x: float(x[0]) if isinstance(x, list) and x else None)
         df['release_date'] = df['release_date'].str.split('-').str[0]
+
+        self.raw_data_path = os.path.join(
+                self.data_path,
+                f"raw_{self.structure_determination_methodology}_{self.rcsb_entity_polymer_type}_{self.dstart}_{self.dend}.csv"
+            )
+        
+        if os.path.exists(self.raw_data_path):
+            self.df = pd.read_csv(self.raw_data_path)
+        else:
+            if not os.path.exists(self.data_path):
+                os.makedirs(self.data_path)
+            self.save_data_as_csv(
+                self.raw_data_path,
+                df
+            )
         return df
     
-    def save_data_as_csv(self, path: typing.Union[str, os.PathLike]):
+    def save_data_as_csv(self, path: typing.Union[str, os.PathLike], df: pd.DataFrame):
         """
         Save data as CSV.
         
@@ -246,7 +261,7 @@ class DatasetDownload:
         Returns:
             None
         """
-        self.df.to_csv(path, index=False)
+        df.to_csv(path, index=False)
         logging.info(f'Data saved as CSV at {path}')
 
 

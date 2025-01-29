@@ -28,5 +28,6 @@ COLUMNS = [
     'polymer_entity_count_RNA',
     'resolution',
     'selected_polymer_entity_types',
-    'pdbx_keywords'
+    'pdbx_keywords',
+    'text',
 ]

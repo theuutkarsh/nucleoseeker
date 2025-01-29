@@ -2,6 +2,7 @@ from itertools import chain
 import os
 import pathlib
 import logging
+import pdb
 import nucleoseeker.utils as utils
 from Bio.PDB.MMCIFParser import MMCIF2Dict
 
@@ -40,6 +41,7 @@ class IndividualStructureFilter:
             polymer_type: str,
             sequence_length: int,
             auto_download: bool = False,
+            pdb_path: str = None,
         ) -> None:
         self.pdb_id = pdb_id
         self.polymer_type = polymer_type
@@ -47,17 +49,20 @@ class IndividualStructureFilter:
         self.sequence_length = sequence_length
         self.auto_download = auto_download
         self.pdb_parser = pdb_parser
-        self.pdb_file = self._check_and_auto_download()
+        self.pdb_file = self._check_and_auto_download(pdb_path)
         self.structure_dict = self.pdb_parser(self.pdb_file)
 
-    def _check_and_auto_download(self):
+    def _check_and_auto_download(self, pdb_path):
         """
         Check if the PDB file exists and auto download if required.
         
         Returns:
             str: Path to the PDB file."""
         pdb_file = f'{self.pdb_id}.cif'
-        DATA_PATH_PDB = DATA_PATH + '/pdb_files'
+        if pdb_path:
+            DATA_PATH_PDB = pdb_path
+        else:
+            DATA_PATH_PDB = DATA_PATH + '/pdb_files'
         path = os.path.join(DATA_PATH_PDB, pdb_file)
         if not os.path.exists(path):
             os.makedirs(DATA_PATH_PDB, exist_ok=True)

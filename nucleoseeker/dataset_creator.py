@@ -1,6 +1,9 @@
+from ast import parse
 import os
+import pdb
 import subprocess
 import logging
+from tracemalloc import start
 import typing
 import platform
 import argparse
@@ -11,6 +14,8 @@ from nucleoseeker.metadata_filter import MetadataFilter
 from nucleoseeker.structure_comparison_filter import StructureComparisonFilter
 import nucleoseeker.utils as utils
 from nucleoseeker.check_tool import check_tool
+import time
+from datetime import datetime
 
 
 
@@ -86,8 +91,8 @@ class DatasetCreator:
         final_chain_ids_path (str): Path to the final chain IDs file.
         cmd (str): cmscan command.
         data (DatasetDownload): DatasetDownload component.
-        structure_filter (StructureLevelFilter): StructureLevelFilter component.
-        polymer_level_filter (PolymerLevelFilter): PolymerLevelFilter component.
+        metadata_filter (MetadataFilter): MetadataFilter component.
+        structure_comparison_filter (StructureComparisonFilter): StructureComparisonFilter component.
     
     Methods:
         save_filtered_data: Save PDB list and DataFrame for each level of filters.
@@ -117,6 +122,7 @@ class DatasetCreator:
             rfam_cm_path: str,
             structure_determination_methodology: typing.Optional[str] = 'experimental',
             rcsb_entity_polymer_type: typing.Optional[str] = 'RNA',
+            rna_sub_type: typing.Optional[str] = None,
             dstart: typing.Optional[int] = 0,
             dend: typing.Optional[int] = 10000,
             download_all: typing.Optional[bool] = False,
@@ -131,6 +137,7 @@ class DatasetCreator:
             sequence_length: typing.Optional[int] = 40,
             sequence_identity: typing.Optional[float] = 50.0,
             auto_download: typing.Optional[bool] = True,
+            pdb_path: typing.Optional[str] = None,
             alignment_tool: typing.Optional[str] = 'clustal',
             e_value_cmscan: typing.Optional[float] = 0.0001,
             save: typing.Optional[bool] = False
@@ -138,6 +145,7 @@ class DatasetCreator:
         self.dataset_name = dataset_name
         self.structure_determination_methodology = structure_determination_methodology
         self.rcsb_entity_polymer_type = rcsb_entity_polymer_type
+        self.rna_sub_type = rna_sub_type
         self.dstart = dstart
         self.dend = dend
         self.download_all = download_all
@@ -152,6 +160,7 @@ class DatasetCreator:
         self.sequence_length = sequence_length
         self.sequence_identity = sequence_identity
         self.auto_download = auto_download
+        self.pdb_path = pdb_path
         self.alignment_tool = alignment_tool
         self.rfam_cm_path = rfam_cm_path
         assert e_value_cmscan > 0, 'E-value should be greater than 0.'
@@ -209,27 +218,62 @@ class DatasetCreator:
 
         logging.debug('DatasetDownload component initialized')
 
-        self.structure_filter = MetadataFilter(
+        self.metadata_filter = MetadataFilter(
             exptl_method=self.exptl_method,
             resolution=self.resolution,
             year_range=self.year_range,
             polymer_entity_instance_count=self.polymer_entity_instance_count,
             polymer_entity_count_RNA=self.polymer_entity_count_RNA,
             selected_polymer_entity_types=self.selected_polymer_entity_types,
-            pdbx_keywords=self.pdbx_keywords
+            pdbx_keywords=self.pdbx_keywords,
+            rna_sub_type=self.rna_sub_type,
         )
 
-        logging.debug('StructureLevelFilter component initialized')
+        logging.debug('MetaDataFilter component initialized')
 
-        self.polymer_level_filter = StructureComparisonFilter(
+        self.structure_comparison_filter = StructureComparisonFilter(
             polymer_type=self.polymer_type,
             sequence_length=self.sequence_length,
             sequence_identity=self.sequence_identity,
             auto_download=self.auto_download,
-            alignment_tool=self.alignment_tool
+            alignment_tool=self.alignment_tool,
+            pdb_path=self.pdb_path,
         )
 
-        logging.debug('PolymerLevelFilter component initialized')
+        logging.debug('StructureComparisonFilter component initialized')
+
+    def apply_metadata_filters(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Apply metadata filters."""
+        df_metadata_filtered = self.metadata_filter.apply_filters(df)
+        if self.save:
+            self.save_pdb_list(df_metadata_filtered, 'metadata_filtered_pdb_list.txt')
+            self.save_dataframe(df_metadata_filtered, 'metadata_filtered_dataframe.csv')
+        return df_metadata_filtered
+    
+
+    def apply_structure_comparison_filters(self, pdb_list: list) -> typing.Tuple[pd.DataFrame, list]:
+        """Apply structure comparison filters."""
+        if os.path.exists(os.path.join(self.dataset_files, 'structure_comparison_filtered_dataframe.csv')):
+            df_structure_comparison_filtered_df = pd.read_csv(os.path.join(self.dataset_files, 'structure_comparison_filtered_dataframe.csv'))
+            df_structure_comparison_filtered_list = df_structure_comparison_filtered_df.values.tolist()
+        else:
+            df_structure_comparison_filtered_list = self.structure_comparison_filter.apply_filters_on_list(pdb_list)
+            df_structure_comparison_filtered_df = pd.DataFrame(df_structure_comparison_filtered_list, columns=['rcsb_id', 'chain_id', 'sequence'])
+        if self.save:
+            self.save_dataframe(df_structure_comparison_filtered_df, 'structure_comparison_filtered_dataframe.csv')
+            self.save_pdb_list(df_structure_comparison_filtered_df, 'structure_comparison_filtered_pdb_list.txt')
+        return df_structure_comparison_filtered_df, df_structure_comparison_filtered_list
+
+    def apply_filters(self, df: pd.DataFrame, df_polymer_filtered_list: list) -> pd.DataFrame:
+        """Apply all filters."""
+        if os.path.exists(os.path.join(self.dataset_files, 'final_dataframe.csv')):
+            df_final = pd.read_csv(os.path.join(self.dataset_files, 'final_dataframe.csv'))
+        else:
+            df_final = self.structure_comparison_filter.apply_filter_on_df(df, df_polymer_filtered_list)
+        if self.save:
+            self.save_pdb_list(df_final, 'final_pdb_list.txt')
+            self.save_dataframe(df_final, 'final_dataframe.csv')
+        return df_final
 
     def save_pdb_list(self, df: pd.DataFrame, filename: str) -> None:
         """Save list of PDBs to a file."""
@@ -245,70 +289,91 @@ class DatasetCreator:
     
     def create_final_fasta_file(self, df) -> None:
         """Create final FASTA file."""
-        return self.polymer_level_filter.create_final_fasta_file(df)
+        return self.structure_comparison_filter.create_final_fasta_file(df)
 
-    def apply_structure_filters(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Apply structure-level filters."""
-        df_structure_filtered = self.structure_filter.apply_filters(df)
-        if self.save:
-            self.save_pdb_list(df_structure_filtered, 'structure_filtered_pdb_list.txt')
-            self.save_dataframe(df_structure_filtered, 'structure_filtered_dataframe.csv')
-        return df_structure_filtered
     
-    def apply_polymer_filters(self, pdb_list: list) -> typing.Tuple[pd.DataFrame, list]:
-        """Apply polymer-level filters."""
-        df_polymer_filtered_list = self.polymer_level_filter.apply_filters_on_list(pdb_list)
-        df_polymer_filtered_df = pd.DataFrame(df_polymer_filtered_list, columns=['rcsb_id', 'chain_id', 'sequence'])
-        if self.save:
-            self.save_dataframe(df_polymer_filtered_df, 'polymer_filtered_dataframe.csv')
-            self.save_pdb_list(df_polymer_filtered_df, 'polymer_filtered_pdb_list.txt')
-        return df_polymer_filtered_df, df_polymer_filtered_list
-    
-    def apply_filters(self, df: pd.DataFrame, df_polymer_filtered_list: list) -> pd.DataFrame:
-        """Apply all filters."""
-        df_final = self.polymer_level_filter.apply_filter_on_df(df, df_polymer_filtered_list)
-        if self.save:
-            self.save_pdb_list(df_final, 'final_pdb_list.txt')
-            self.save_dataframe(df_final, 'final_dataframe.csv')
-        return df_final
+
+
         
     
     def run(self) -> None:
         """Run CMScan."""
 
-        df = self.data.df
+        start_time = time.time()
+        df = self.data.get_data_as_df()
+        end_time = time.time()
 
-        df_structure_filtered = self.apply_structure_filters(df)
-        pdb_id_list = df_structure_filtered['rcsb_id'].to_list()
-        df_polymer_filtered_list = self.apply_polymer_filters(pdb_id_list)[1]
+        dataset_download_time = end_time - start_time
 
-        df_final = self.apply_filters(df, df_polymer_filtered_list)
+        start_time = time.time()
+        df_metadata_filtered = self.apply_metadata_filters(df)
+        end_time = time.time()
+
+        metadata_filter_time = end_time - start_time
+        pdb_id_list = df_metadata_filtered['rcsb_id'].to_list()
+
+        start_time = time.time()
+        df_structure_comparison_filtered_list = self.apply_structure_comparison_filters(pdb_id_list)[1]
+        end_time = time.time()
+
+        individual_structure_filter_time = end_time - start_time
+
+        start_time = time.time()
+        df_final = self.apply_filters(df, df_structure_comparison_filtered_list)
+        end_time = time.time()
+
+        structure_comparison_filter_time = end_time - start_time
 
 
         self.create_final_fasta_file(df_final)
 
+        start_time = time.time()
         if self.use_cmscan:
-            logging.debug('Running CMScan')
-            try:
-                subprocess.run(self.cmd, shell=True, check=True, stdout=subprocess.PIPE)
-            except subprocess.CalledProcessError as e:
-                logging.error(f'Error occurred while running cmscan: {e}')
-                raise e
-            # clean the tblout file
-            if platform.system() == "Darwin":
-                os.system(
-                    f"tail -r {self.tblout} | awk '!/^#/{{p=1}} p' | tail -r > {self.clean_tblout_path}"
-                )
-            else:
-                os.system(
-                    f"tac {self.tblout} | awk '!/^#/{{p=1}} p' | tac > {self.clean_tblout_path}"
-                )
-            logging.debug('cmscan completed successfully')
+            if not os.path.exists(self.tblout):
+                logging.debug('Running CMScan')
+                try:
+                    subprocess.run(self.cmd, shell=True, check=True, stdout=subprocess.PIPE)
+                except subprocess.CalledProcessError as e:
+                    logging.error(f'Error occurred while running cmscan: {e}')
+                    raise e
+                # clean the tblout file
+                if platform.system() == "Darwin":
+                    os.system(
+                        f"tail -r {self.tblout} | awk '!/^#/{{p=1}} p' | tail -r > {self.clean_tblout_path}"
+                    )
+                else:
+                    os.system(
+                        f"tac {self.tblout} | awk '!/^#/{{p=1}} p' | tac > {self.clean_tblout_path}"
+                    )
+                logging.debug('cmscan completed successfully')
         else:
-            logging.warning('Polymer type must be RNA, if you wish to generate a dataset for proteins, please hmmer instead of infernal. Look here for more details: http://eddylab.org/software/hmmer/Userguide.pdf')
+            logging.warning('Polymer type must be RNA, if you wish to generate a dataset for proteins, please use hmmer instead of infernal. Look here for more details: http://eddylab.org/software/hmmer/Userguide.pdf')
+        end_time = time.time()
+
+        cmscan_time = end_time - start_time
+
+        fam_pdb_chain_df = utils.get_final_fam_pdb_chain_csv(self.clean_tblout_path)
+        utils.save_sequences(self.final_fasta_path, self.sequences_path)
+
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        with open(os.path.join(os.environ['DATA_PATH'] + '/statistics.txt'), 'w+') as file:
+            file.write(f"Date and Time: {current_time}\n\n")
+            file.write(f"Totoal number of RNA structures in PDB: {len(df)}\n")
+            file.write(f"Number of RNA structures after metadata filter: {len(df_metadata_filtered)}\n")
+            file.write(f"Number of RNA structures after individual structure filter: {len(df_structure_comparison_filtered_list)}\n")
+            file.write(f"Number of RNA structures after structure comparison filter: {len(df_final)}\n")
+            file.write(f"Number of RNA structures after CMScan: {len(fam_pdb_chain_df)}\n")
+            file.write(f"Time taken for dataset download: {round(dataset_download_time/60, 3)} minutes\n")
+            file.write(f"Time taken for metadata filter: {round(metadata_filter_time/60, 3)} minutes\n")
+            file.write(f"Time taken for individual structure filter: {round(individual_structure_filter_time/60, 3)} minutes\n")
+            file.write(f"Time taken for structure comparison filter: {round(structure_comparison_filter_time/60, 3)} minutes\n")
+            file.write(f"Time taken for CMScan: {round(cmscan_time/60, 3)} minutes\n")
+
 
 
 def main():
+    import sys
     logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
     check_tool('cmscan')
     check_tool('clustalo')
@@ -318,6 +383,7 @@ def main():
     parser.add_argument('--rfam_cm_path', type=str, help='Path to the Rfam.cm file', required=True)
     parser.add_argument('--structure_determination_methodology', type=str, help='Structure determination methodology', default='experimental')
     parser.add_argument('--rcsb_entity_polymer_type', type=str, help='Polymer type', default='RNA')
+    parser.add_argument('--rna_sub_type', type=str, nargs='*', help='RNA sub type', default=None)
     parser.add_argument('--dstart', type=int, help='Start index for pagination', default=0)
     parser.add_argument('--dend', type=int, help='End index for pagination', default=10000)
     parser.add_argument('--download_all', type=bool, help='Download all entries', default=False)
@@ -332,6 +398,7 @@ def main():
     parser.add_argument('--sequence_length', type=int, help='Sequence length', default=40)
     parser.add_argument('--sequence_identity', type=float, help='Sequence identity', default=50.0)
     parser.add_argument('--auto_download', type=bool, help='Auto download PDB file', default=True)
+    parser.add_argument('--pdb_path', type=str, help='Path to the PDB file', default=None)
     parser.add_argument('--alignment_tool', type=str, help='Alignment tool', default='clustal')
     parser.add_argument('--e_value_cmscan', type=float, help='E-value for CMScan', default=10)
     parser.add_argument('--save', type=bool, help='Save filtered data', default=False)
@@ -343,12 +410,20 @@ def main():
     if not os.path.exists(DATA_PATH):
         os.makedirs(DATA_PATH)
     os.environ['DATA_PATH'] = DATA_PATH + f'/{dataset_name}'
+    os.makedirs(os.environ['DATA_PATH'], exist_ok=True)
+
+    command_string = ' '.join(sys.argv)
+
+    # Save the command string to a file
+    with open(os.environ['DATA_PATH'] + '/command.txt', 'w') as file:
+        file.write(command_string)
 
     dc = DatasetCreator(
         dataset_name=args.dataset_name,
         rfam_cm_path=args.rfam_cm_path,
         structure_determination_methodology=args.structure_determination_methodology,
         rcsb_entity_polymer_type=args.rcsb_entity_polymer_type,
+        rna_sub_type=args.rna_sub_type,
         dstart=args.dstart,
         dend=args.dend,
         download_all=args.download_all,
@@ -363,14 +438,14 @@ def main():
         sequence_length=args.sequence_length,
         sequence_identity=args.sequence_identity,
         auto_download=args.auto_download,
+        pdb_path=args.pdb_path,
         alignment_tool=args.alignment_tool,
         e_value_cmscan=args.e_value_cmscan,
         save=args.save
     )
 
     dc.run()
-    utils.get_final_fam_pdb_chain_csv(dc.clean_tblout_path)
-    utils.save_sequences(dc.final_fasta_path, dc.sequences_path)
+
 
 
 

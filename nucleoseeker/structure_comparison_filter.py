@@ -1,6 +1,7 @@
 import os
 import pathlib
 import logging
+import pdb
 import subprocess
 import re
 import pandas as pd
@@ -57,6 +58,7 @@ class StructureComparisonFilter:
             sequence_identity: float,
             auto_download: bool = False,
             alignment_tool: str = 'clustal',
+            pdb_path: str = None,
         ) -> None:
         self.polymer_type = polymer_type
         assert sequence_length > 0, 'Sequence length should be greater than 0.'
@@ -66,6 +68,7 @@ class StructureComparisonFilter:
         self.auto_download = auto_download
         assert alignment_tool in ['clustal', 'emboss'], 'Alignment tool should be either clustal or emboss.'
         self.alignment_tool = alignment_tool
+        self.pdb_path = pdb_path
         
         self.pdb_parser = MMCIF2Dict
         
@@ -90,7 +93,8 @@ class StructureComparisonFilter:
             pdb_id=pdb_id,
             polymer_type=self.polymer_type,
             sequence_length=self.sequence_length,
-            auto_download=self.auto_download
+            auto_download=self.auto_download,
+            pdb_path=self.pdb_path
         )
         single_pdb_data_list = pdb_filters.check_polymer_type()
         return single_pdb_data_list
@@ -254,6 +258,7 @@ class StructureComparisonFilter:
         Returns:
             pd.DataFrame: Filtered dataframe.
         """
+        df = df.copy()
         if 'resolution' not in df.columns:
             raise ValueError('The dataframe does not have the resolution column. Please use the StructureLevelFilter class to get the right dataframe')
         rcsb_id_with_no_resolution = df[df['resolution'].isnull()]['rcsb_id'].to_list()
