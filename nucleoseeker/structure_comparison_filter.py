@@ -1,7 +1,6 @@
 import os
 import pathlib
 import logging
-import pdb
 import subprocess
 import re
 import pandas as pd
@@ -54,14 +53,15 @@ class StructureComparisonFilter:
     def __init__(
             self,
             polymer_type: str,
-            sequence_length: int,
+            sequence_length: tuple[int, int],
             sequence_identity: float,
             auto_download: bool = False,
             alignment_tool: str = 'clustal',
             pdb_path: str = None,
         ) -> None:
         self.polymer_type = polymer_type
-        assert sequence_length > 0, 'Sequence length should be greater than 0.'
+        assert isinstance(sequence_length, tuple) and len(sequence_length) == 2, "sequence_length must be a tuple of two integers"
+        assert sequence_length[0] <= sequence_length[1], "sequence_length must be a tuple of two integers where the first is less than or equal to the second"
         assert 0 <= sequence_identity <= 100, 'Sequence identity should be between 0 and 100.'
         self.sequence_length = sequence_length
         self.sequence_identity = sequence_identity
@@ -78,7 +78,10 @@ class StructureComparisonFilter:
         
         logging.basicConfig(level=logging.INFO)
 
-    def apply_filters_on_pdb_id(self, pdb_id: str):
+    def apply_filters_on_pdb_id(
+            self,
+            pdb_id: str
+        ) -> list:
         """
         Using this method, you can apply filters on a single PDB ID.
 
@@ -99,7 +102,10 @@ class StructureComparisonFilter:
         single_pdb_data_list = pdb_filters.check_polymer_type()
         return single_pdb_data_list
     
-    def apply_filters_on_list(self, pdb_list: list):
+    def apply_filters_on_list(
+            self,
+            pdb_list: list,
+        ) -> list:
         """
         Using this method, you can apply filters on a list of PDB IDs.
 
@@ -119,7 +125,10 @@ class StructureComparisonFilter:
             raise ValueError("No PDB files satisfy the given criteria. Please check the arguments for 'polymer_type' and 'sequence_length'.")
         return multiple_pdbs_data_list
     
-    def create_combined_fasta_file(self, data_list: list):
+    def create_combined_fasta_file(
+            self,
+            data_list: list,
+        ) -> None:
         """
         Create a combined fasta file from the data list.
         
@@ -247,35 +256,44 @@ class StructureComparisonFilter:
         df = df.round(1)
         return df
     
+    
+
+
     def apply_filter_on_df(self, df: pd.DataFrame, data_list: list):
         """
         Apply filter on dataframe.
         
         Args:
-            df (pd.DataFrame): Dataframe.
+            df (pd.DataFrame): Dataframe obtained from MetadataFilter class. 
             data_list (list): List of tuples containing PDB ID, chain ID, and sequence.
             
         Returns:
             pd.DataFrame: Filtered dataframe.
         """
         df = df.copy()
-        if 'resolution' not in df.columns:
-            raise ValueError('The dataframe does not have the resolution column. Please use the StructureLevelFilter class to get the right dataframe')
+        if 'resolution' not in df.columns: #assertion might also help
+            raise ValueError('The dataframe does not have the resolution column. Please use the MetadataFilter class to get the right dataframe')
+        
         rcsb_id_with_no_resolution = df[df['resolution'].isnull()]['rcsb_id'].to_list()
         #drop data from data list based on rcsb_id which don't have resolution
         data_list = [data for data in data_list if data[0] not in rcsb_id_with_no_resolution]
         df.dropna(subset=['resolution'], inplace=True)
         df = df[df['rcsb_id'].isin([data[0] for data in data_list])].copy()
         df.reset_index(drop=True, inplace=True)
+
         if self.alignment_tool == 'clustal':
             similarity_df = self.get_sequence_identity_df_clustal(data_list)
-        else:
+        elif self.alignment_tool == 'emboss':
             similarity_df = self.get_sequence_identity_df_emboss(data_list)
+        else:
+            raise ValueError('Alignment tool should be either clustal or emboss.')
+        
         similarity_df = similarity_df[similarity_df['rcsb_id'].str.split('_').str[0].isin(df['rcsb_id'])]
         similarity_df.dropna(inplace=True)
         similarity_df.reset_index(drop=True, inplace=True)
         df['chain_id'] = similarity_df['rcsb_id'].str.split('_').str[1]
         df['sequence'] = [data[2] for data in data_list]
+
         assert df['rcsb_id'].to_list() == similarity_df['rcsb_id'].str.split('_').str[0].to_list(), 'The PDB ids in the dataframes do not match'
         assert df.shape[0] == similarity_df.shape[0], f'The number of rows in the dataframes do not match. They are {df.shape[0]} and {similarity_df.shape[0]}'
 
@@ -292,6 +310,79 @@ class StructureComparisonFilter:
         df_final = df[df['rcsb_id'].isin(pdb_names)]
         return df_final
     
+    def _apply_filter_on_df_alternative(self, df: pd.DataFrame, data_list: list):
+        """
+        Apply filter on dataframe.
+        
+        Args:
+            df (pd.DataFrame): Dataframe obtained from MetadataFilter class. 
+            data_list (list): List of tuples containing PDB ID, chain ID, and sequence.
+            
+        Returns:
+            pd.DataFrame: Filtered dataframe.
+        """
+        df = df.copy()
+        if 'resolution' not in df.columns: #assertion might also help
+            raise ValueError('The dataframe does not have the resolution column. Please use the MetadataFilter class to get the right dataframe')
+        
+        rcsb_id_with_no_resolution = df[df['resolution'].isnull()]['rcsb_id'].to_list()
+        #drop data from data list based on rcsb_id which don't have resolution
+        data_list = [data for data in data_list if data[0] not in rcsb_id_with_no_resolution]
+        df.dropna(subset=['resolution'], inplace=True)
+        df = df[df['rcsb_id'].isin([data[0] for data in data_list])].copy()
+        df.reset_index(drop=True, inplace=True)
+
+        if self.alignment_tool == 'clustal':
+            similarity_df = self.get_sequence_identity_df_clustal(data_list)
+        elif self.alignment_tool == 'emboss':
+            similarity_df = self.get_sequence_identity_df_emboss(data_list)
+        else:
+            raise ValueError('Alignment tool should be either clustal or emboss.')
+        
+        similarity_df = similarity_df[similarity_df['rcsb_id'].str.split('_').str[0].isin(df['rcsb_id'])]
+        similarity_df.dropna(inplace=True)
+        similarity_df.reset_index(drop=True, inplace=True)
+        df['chain_id'] = similarity_df['rcsb_id'].str.split('_').str[1]
+        df['sequence'] = [data[2] for data in data_list]
+
+        assert df['rcsb_id'].to_list() == similarity_df['rcsb_id'].str.split('_').str[0].to_list(), 'The PDB ids in the dataframes do not match'
+        assert df.shape[0] == similarity_df.shape[0], f'The number of rows in the dataframes do not match. They are {df.shape[0]} and {similarity_df.shape[0]}'
+
+        similarity_df['resolution'] = df['resolution'].astype(float)
+        dissimilar_pdb_lowest_resolutions = []       
+        logging.info('Applying similarity cutoff, to get the final dataframe...')
+        name_list = ['_'.join([data[0], data[1]]) for data in data_list]
+
+        # different code starts here
+        # Convert the dataframe from wide to long format for the columns in name_list.
+        df_long = similarity_df.melt(
+            id_vars=['rcsb_id', 'resolution'], 
+            value_vars=name_list, 
+            var_name='name', 
+            value_name='similarity'
+        )
+
+        # Filter rows based on the threshold.
+        df_filtered = df_long[df_long['similarity'] > self.sequence_identity]
+
+        # For each 'name', pick the row with the minimum resolution.
+        min_res_idx = df_filtered.groupby('name')['resolution'].idxmin()
+        df_min = df_filtered.loc[min_res_idx]
+
+        # Get the list of rcsb_ids.
+        dissimilar_pdb_lowest_resolutions = df_min['rcsb_id'].tolist()
+
+        # Process to get the pdb names.
+        pdb_names = [pdb.split('_')[0] for pdb in dissimilar_pdb_lowest_resolutions]
+
+        # Filter the final dataframe.
+        df_final = df[df['rcsb_id'].isin(pdb_names)]
+
+        return df_final
+
+
+
+
     def create_final_fasta_file(self, df_final: pd.DataFrame):
         """
         Create final fasta file.

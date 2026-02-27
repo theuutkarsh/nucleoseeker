@@ -1,8 +1,6 @@
-from itertools import chain
 import os
 import pathlib
 import logging
-import pdb
 import nucleoseeker.utils as utils
 from Bio.PDB.MMCIFParser import MMCIF2Dict
 
@@ -39,13 +37,14 @@ class IndividualStructureFilter:
             pdb_parser: MMCIF2Dict,
             pdb_id: str,
             polymer_type: str,
-            sequence_length: int,
+            sequence_length: tuple[int, int],
             auto_download: bool = False,
             pdb_path: str = None,
         ) -> None:
         self.pdb_id = pdb_id
         self.polymer_type = polymer_type
-        assert sequence_length > 0, 'Sequence length should be greater than 0.'
+        assert isinstance(sequence_length, tuple) and len(sequence_length) == 2, "sequence_length must be a tuple of two integers"
+        assert sequence_length[0] <= sequence_length[1], "sequence_length must be a tuple of two integers where the first is less than or equal to the second"
         self.sequence_length = sequence_length
         self.auto_download = auto_download
         self.pdb_parser = pdb_parser
@@ -89,7 +88,7 @@ class IndividualStructureFilter:
                 chain_id = polymer_type_id.split(',')[0]
                 chain_number = chain_ids.index(polymer_type_id)
                 sequence_ = self.structure_dict.get('_entity_poly.pdbx_seq_one_letter_code_can', [])[chain_number]
-                if sequence_ and len(sequence_) >= self.sequence_length:
+                if sequence_ and len(sequence_) >= self.sequence_length[0] and len(sequence_) <= self.sequence_length[1]:
                     sequence = sequence_.replace('\n', '')
                     if self.all_characters_are_n(sequence) or self.all_characters_are_x(sequence):
                         logging.info(f"The chain {chain_id} in {self.pdb_id} has all 'N' characters. Skipping...")
@@ -101,7 +100,7 @@ class IndividualStructureFilter:
                     chain_id = polymer_type_id.split(',')[0]
                     chain_number = chain_ids.index(polymer_type_id)
                     sequence_ = self.structure_dict.get('_entity_poly.pdbx_seq_one_letter_code_can', [])[chain_number]
-                    if sequence_ and len(sequence_) >= self.sequence_length:
+                    if sequence_ and len(sequence_) >= self.sequence_length[0] and len(sequence_) <= self.sequence_length[1]:
                         sequence = sequence_.replace('\n', '')
                         if self.all_characters_are_n(sequence) or self.all_characters_are_x(sequence):
                             logging.info(f"The chain {chain_id} in {self.pdb_id} has all 'N' characters. Skipping...")

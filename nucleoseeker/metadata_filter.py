@@ -275,7 +275,6 @@ class MetadataFilter:
                 df.reset_index(drop=True, inplace=True)
         else:
             logging.info("The 'rna_sub_type' is None, so 'text' will not contain the RNA type.")
-        print(df)
         if df is None:
             raise ValueError("The dataframe is empty after applying the RNA sub type filter. Please use a different RNA sub type.")
         

@@ -1,9 +1,7 @@
-from ast import parse
 import os
 import pdb
 import subprocess
 import logging
-from tracemalloc import start
 import typing
 import platform
 import argparse
@@ -134,7 +132,7 @@ class DatasetCreator:
             selected_polymer_entity_types: typing.Optional[typing.List[str]] = None,
             pdbx_keywords: typing.Optional[typing.List[str]] = ['RNA'],
             polymer_type: typing.Optional[str] = 'polyribonucleotide',
-            sequence_length: typing.Optional[int] = 40,
+            sequence_length: typing.Tuple[int, int] = (20, 100),
             sequence_identity: typing.Optional[float] = 50.0,
             auto_download: typing.Optional[bool] = True,
             pdb_path: typing.Optional[str] = None,
@@ -264,12 +262,12 @@ class DatasetCreator:
             self.save_pdb_list(df_structure_comparison_filtered_df, 'structure_comparison_filtered_pdb_list.txt')
         return df_structure_comparison_filtered_df, df_structure_comparison_filtered_list
 
-    def apply_filters(self, df: pd.DataFrame, df_polymer_filtered_list: list) -> pd.DataFrame:
+    def apply_filters(self, df: pd.DataFrame, df_structure_comparison_filtered_list: list) -> pd.DataFrame:
         """Apply all filters."""
         if os.path.exists(os.path.join(self.dataset_files, 'final_dataframe.csv')):
             df_final = pd.read_csv(os.path.join(self.dataset_files, 'final_dataframe.csv'))
         else:
-            df_final = self.structure_comparison_filter.apply_filter_on_df(df, df_polymer_filtered_list)
+            df_final = self.structure_comparison_filter.apply_filter_on_df(df, df_structure_comparison_filtered_list)
         if self.save:
             self.save_pdb_list(df_final, 'final_pdb_list.txt')
             self.save_dataframe(df_final, 'final_dataframe.csv')
@@ -287,7 +285,7 @@ class DatasetCreator:
         df.to_csv(os.path.join(self.dataset_files, filename), index=False)
         logging.debug(f'DataFrame saved to {filename}')
     
-    def create_final_fasta_file(self, df) -> None:
+    def create_final_fasta_file(self, df: pd.DataFrame) -> None:
         """Create final FASTA file."""
         return self.structure_comparison_filter.create_final_fasta_file(df)
 
@@ -395,7 +393,7 @@ def main():
     parser.add_argument('--selected_polymer_entity_types', nargs='*', help='Selected polymer entity types', default=None) #[‘Nucleic acid (only)’,‘Other’, ‘Protein/NA’]
     parser.add_argument('--pdbx_keywords', nargs='*', help='PDBx keywords', default=None) #['RNA', 'DNA/RNA', 'RIBOSOME', 'RIBOZYME']
     parser.add_argument('--polymer_type', type=str, help='Polymer type', default='polyribonucleotide')
-    parser.add_argument('--sequence_length', type=int, help='Sequence length', default=40)
+    parser.add_argument('--sequence_length', type=int, nargs=2, help='Sequence length as a tuple (min_length, max_length)', default=(20, 100))
     parser.add_argument('--sequence_identity', type=float, help='Sequence identity', default=50.0)
     parser.add_argument('--auto_download', type=bool, help='Auto download PDB file', default=True)
     parser.add_argument('--pdb_path', type=str, help='Path to the PDB file', default=None)
@@ -435,7 +433,7 @@ def main():
         selected_polymer_entity_types=args.selected_polymer_entity_types,
         pdbx_keywords=args.pdbx_keywords,
         polymer_type=args.polymer_type,
-        sequence_length=args.sequence_length,
+        sequence_length=tuple(args.sequence_length),
         sequence_identity=args.sequence_identity,
         auto_download=args.auto_download,
         pdb_path=args.pdb_path,
